@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='Login.css'>
+</head>
+<body>
+    <div class="tela-login">
+        <div class="logo-rh">
+            <h1 class="logo-titulo">Sistema RH</h1>
+            <img src="../../../../public/Logo-RH.png" alt="Logo do Sistema RH - LS: Lara & Sara" height="350" width="350">
+        </div>
+       
+        <div class="login">
+            <h1 class="login-titulo">Login</h1>
+            <div class="group">
+                <form method="get" action="envio_dados.php">
+                    <input type="text" name="email" placeholder="E-mail">
+                    <br>
+                    <br>
+                    <br>
+                    <input type="e-mail" name="senha" placeholder="Senha">
+                </form>
+            </div>
+            <div class="group">
+                <form>
+                    <input type="checkbox">Mantenha-me conectado<br>
+                </form>
+                <a href="#" class="not_account">Esqueci minha senha</a>
+            </div>
+            <div class="group">
+                <form class="campos-login" method="get" action="envio_dados.php">
+                    <input class="botao-enviar" type="submit" name="enviar" value="Enviar">    
+                </form>
+            </div>
+            <div class="get_the_app">
+                <p>ou</p>
+                <div class="apps">
+                    <img src="../../../../public/facebook-icone.png" alt="Ícone do Facebook" height="50" width="50"></img>
+                    <img src="../../../../public/Twitter.png" alt="Ícone do Twitter" height="40" width="40"></img>
+                    <img src="../../../../public/google.png" alt="Ícone do Google" height="30" width="30"></img>
+                </div>
+            </div>
+            <div class="group">
+                <a href="#" class="not_account">Criar uma conta</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
