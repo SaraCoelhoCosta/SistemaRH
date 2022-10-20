@@ -11,25 +11,27 @@
     <div class="tela-login">
         <div class="logo-rh">
             <h1 class="logo-titulo">Sistema RH</h1>
-            <img src="../../../../public/Logo-RH.png" alt="Logo do Sistema RH - LS: Lara & Sara" height="350" width="350">
+            <img src="../../../../public/Logo-RH.png" alt="Logo do Sistema RH - LS: Lara & Sara" height="250" width="250">
         </div>
        
         <div class="login">
-            <h1 class="login-titulo">Login</h1>
             <div class="group">
+                <h1 class="login-titulo">Login</h1>
                 <form method="get" action="envio_dados.php">
-                    <input type="text" name="email" placeholder="E-mail">
+                    <input class="campos" type="text" name="email" placeholder="E-mail">
                     <br>
                     <br>
                     <br>
-                    <input type="e-mail" name="senha" placeholder="Senha">
+                    <input class="campos" type="text" name="senha" placeholder="Senha">
                 </form>
             </div>
             <div class="group">
-                <form>
-                    <input type="checkbox">Mantenha-me conectado<br>
-                </form>
-                <a href="#" class="not_account">Esqueci minha senha</a>
+                <div class="acesso-alternativo">
+                    <form class="manter-conectado">
+                        <input type="checkbox">Mantenha-me conectado<br>
+                    </form>
+                    <a href="#" class="not_account">Esqueci minha senha</a>
+                </div>
             </div>
             <div class="group">
                 <form class="campos-login" method="get" action="envio_dados.php">
@@ -37,7 +39,11 @@
                 </form>
             </div>
             <div class="get_the_app">
-                <p>ou</p>
+                <p>
+                    <img src="../../../../public/linha-horizontal.png" alt="Ícone do Facebook" height="10" width="120"></img>
+                    ou
+                    <img src="../../../../public/linha-horizontal.png" alt="Ícone do Facebook" height="10" width="120"></img>
+                </p>
                 <div class="apps">
                     <img src="../../../../public/facebook-icone.png" alt="Ícone do Facebook" height="50" width="50"></img>
                     <img src="../../../../public/Twitter.png" alt="Ícone do Twitter" height="40" width="40"></img>
