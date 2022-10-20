@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='Cadastro.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+</head>
+<body>
+    <div class="tela-cadastro">
+        <div class="logo-rh">
+            <h1 class="logo-titulo">Sistema RH</h1>
+            <img src="../../../../public/Logo-RH.png" alt="Logo do Sistema RH - LS: Lara & Sara" height="250" width="250">
+        </div>
+       
+        <div class="cadastro">
+            <div class="group">
+                <h1 class="cadastro-titulo">Criar Conta</h1>
+                <br>
+                <br>
+                <br>
+                <form method="get" action="envio_dados.php">
+                    Nome
+                    <br>
+                    <input class="campos" type="text" name="nome" placeholder="Nome completo">
+                    <br>
+                    <br>
+                    <br>
+                    E-mail
+                    <br>
+                    <input class="campos" type="text" name="email" placeholder="E-mail">
+                    <br>
+                    <br>
+                    <br>
+                    Senha
+                    <br>
+                    <input class="campos" type="text" name="senha" placeholder="Senha">
+                </form>
+            </div>
+
+            <div class="botoes">
+                <button class="botaoCancelar">
+                    Cancelar
+                </button>
+                <button class="botaoCadastrar">
+                    <i class='fas fa-check' style='color: white'></i>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
