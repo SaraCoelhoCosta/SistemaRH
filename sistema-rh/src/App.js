@@ -1,8 +1,10 @@
+import RoutesIndex from './routes';
+import React from "react"
+
 function App() {
+
   return (
-    <div className="App">
-      <h1>Sistema RH</h1>
-    </div>
+    <RoutesIndex />
   );
 }
 
