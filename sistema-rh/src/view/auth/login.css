@@ -1,12 +1,30 @@
-.card-formulario-login {
+.fundo {
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 100vh;
 }
 
-form {
+.coluna1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backgroud-coluna1{
+    background-image: url("http://localhost:3000/Logo-RH.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 400px;
+}
+
+.coluna2{
+    background-color: rgb(75, 182, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
     padding-top: 30px;
     padding-bottom: 20px;

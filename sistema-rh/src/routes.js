@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './frontend/auth/login';
-import Cadastro from './frontend/auth/cadastro';
-import Dashboard from './frontend/dashboard/dashboard';
+import Login from './view/auth/login';
+import Cadastro from './view/auth/cadastro';
+import Dashboard from './view/dashboard/dashboard';
 
 export default function RoutesRH() {
     return (
