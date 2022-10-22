@@ -1,10 +1,11 @@
 import './login.css';
+import api from "../../services/api";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
+import React, { useState } from "react";
 
 export default function Login() {
 
@@ -15,7 +16,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const enviar = (evento) => {
+    const validar = (evento) => {
         const formulario = evento.currentTarget;
         if (formulario.checkValidity() === false) {
             evento.preventDefault();
@@ -27,10 +28,10 @@ export default function Login() {
 
     return (
         <div className="fundo">
-            <div className="col-7 config-col1 bg-col1">
+            <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
-                <Form className="form" noValidate validated={validated} onSubmit={enviar}>
+                <Form className="form" noValidate validated={validated} onSubmit={validar}>
                     <div className="conteudo-formulario-login">
                         <h3 className="titulo-formulario-login">Login</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
