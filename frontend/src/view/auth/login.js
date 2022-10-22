@@ -1,12 +1,15 @@
 import './login.css';
+import api from "../../services/api";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+    const navigate = useNavigate();
 
     // Validação de campos
     const [validated, setValidated] = useState(false);
@@ -15,7 +18,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const validar = (evento) => {
+    const enviar = (evento) => {
         const formulario = evento.currentTarget;
         if (formulario.checkValidity() === false) {
             evento.preventDefault();
@@ -23,19 +26,24 @@ export default function Login() {
         }
 
         setValidated(true);
+        api.post('/logar', { 
+            email: email, 
+            senha: senha, 
+        }).then((response) => { navigate('/home'); });
     };
+
 
     return (
         <div className="fundo">
             <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
-                <Form className="form" noValidate validated={validated} onSubmit={validar}>
+                <Form className="form" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-login">
                         <h3 className="titulo-formulario-login">Login</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>E-mail</Form.Label>
-                            <Form.Control type="email" value={email}
+                            <Form.Control type="email"
                                 onChange={(e) => setEmail(e.target.value)} required placeholder="Insira seu e-mail" />
                             <Form.Control.Feedback></Form.Control.Feedback>
                             <Form.Control.Feedback type="invalid">
@@ -45,7 +53,7 @@ export default function Login() {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Senha</Form.Label>
-                            <Form.Control type="password" value={senha}
+                            <Form.Control type="password"
                                 onChange={(e) => setSenha(e.target.value)} required placeholder="Senha" />
                             <Form.Control.Feedback />
                             <Form.Control.Feedback type="invalid">

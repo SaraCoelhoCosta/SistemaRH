@@ -15,9 +15,10 @@ module.exports = {
             const usuario = doc.user;
             await addDoc(User, {
                 uid: usuario.uid,
-                nome,
-                email,
+                nome: nome,
+                email: email,
             });
+            console.log('Usuário cadastrado!');
             res.send({ msg: 'Usuário cadastrado!' });
         } catch (error) {
             console.error(error);
@@ -30,6 +31,7 @@ module.exports = {
         try {
             const { email, senha } = req.body;
             await signInWithEmailAndPassword(auth, email, senha);
+            console.log('Usuário logado!');
             res.send({ msg: 'Usuário logado!' });
         } catch (error) {
             console.error(error);

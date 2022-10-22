@@ -1,4 +1,4 @@
-.card-formulario-dashboard {
+.card-formulario-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,12 +15,12 @@ form {
     background-color: white;
 }
 
-.conteudo-formulario-dashboard {
+.conteudo-formulario-home {
     padding-left: 12%;
     padding-right: 12%;
 }
 
-.titulo-formulario-dashboard {
+.titulo-formulario-home {
     text-align: center;
     margin-bottom: 1em;
     font-size: 24px;

@@ -1,10 +1,10 @@
-import RoutesIndex from './routes';
+import RoutesRH from './routes';
 import React from "react"
 
 function App() {
 
   return (
-    <RoutesIndex />
+    <RoutesRH />
   );
 }
 
