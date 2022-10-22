@@ -4,24 +4,26 @@
     height: 100vh;
 }
 
-.coluna1 {
+.config-col1 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.backgroud-coluna1 {
-    background-image: url("http://localhost:3000/Logo-RH.png");
+.bg-col1 {
+    background-image: url("http://localhost:3000/recrutamento1.png");
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 400px;
+    background-size: 800px;
+    background-position: bottom;
 }
 
-.coluna2 {
-    background-color: rgb(75, 182, 253);
+.config-col2 {
+    background-color: #D4E8FF;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom-left-radius: 4%;
+    border-top-left-radius: 4%;
 }
 
 .form {

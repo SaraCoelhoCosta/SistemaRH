@@ -27,9 +27,9 @@ export default function Cadastro() {
 
     return (
         <div className="fundo">
-            <div className="col-7 coluna1 backgroud-coluna1">
+            <div className="col-7 config-col1 bg-col1">
             </div>
-            <div className="col-5 coluna2">
+            <div className="col-5 config-col2">
                 <Form className="form" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-cadastro">
                         <h3 className="titulo-formulario-cadastro">Cadastro</h3>
