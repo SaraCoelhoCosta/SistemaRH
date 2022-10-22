@@ -1,5 +1,4 @@
 import './login.css';
-import api from "../../services/api";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
