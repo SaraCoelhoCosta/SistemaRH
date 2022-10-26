@@ -25,11 +25,12 @@ export default function Login() {
             ev.stopPropagation();
         }
         setValidated(true);
+
         api.post('/logar', { 
             email: email, 
             senha: senha, 
-        }).then((response) => { navigate('/home'); });
-        navigate('/home');
+        }).then( async () => { await navigate('/home'); });
+        //navigate('/home');
     };
 
 

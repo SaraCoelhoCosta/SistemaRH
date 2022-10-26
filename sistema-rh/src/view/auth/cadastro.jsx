@@ -1,9 +1,9 @@
 import './cadastro.css';
-import api from "../../services/api";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { cadastrar } from "../../controller/userController";
 
 export default function Cadastro() {
 
@@ -17,7 +17,7 @@ export default function Cadastro() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    function enviar(ev) {
+    async function enviar(ev) {
         const formulario = ev.currentTarget;
         if (formulario.checkValidity() === false) {
             ev.preventDefault();
@@ -25,13 +25,16 @@ export default function Cadastro() {
         }
 
         setValidated(true);
-        api.post('cadastrar', {
-            nome: nome,
-            email: email,
-            senha: senha,
-        }).then((res) => {
-            if (res) navigate('/home');
-        });
+
+        await cadastrar(nome, email, senha).then((res) => {
+            if (res) {
+                alert('Usuário cadastrado!');
+                navigate('/home');
+             }
+             else {
+                 alert('Usuário NÃO cadastrado!');
+             }
+         });
     };
 
     return (

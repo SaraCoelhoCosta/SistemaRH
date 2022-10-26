@@ -5,27 +5,29 @@ const { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } = 
 const table = 'usuarios';
 const User = collection(db, table);
 
+// Cria usuário
+const cadastrar = async (req, res) => {
+    try {
+        const { nome, email, senha } = req.body;
+        const doc = await createUserWithEmailAndPassword(auth, email, senha);
+        const usuario = doc.user;
+        await addDoc(User, {
+            uid: usuario.uid,
+            nome: nome,
+            email: email,
+        });
+        return true; 
+        
+    } catch (error) {
+        alert(error.message);
+        return false;
+    }
+};
+
+
 module.exports = {
 
-    // Cria usuário
-    async cadastrar(req, res) {
-        try {
-            const { nome, email, senha } = req.body;
-            const doc = await createUserWithEmailAndPassword(auth, email, senha);
-            const usuario = doc.user;
-            await addDoc(User, {
-                uid: usuario.uid,
-                nome: nome,
-                email: email,
-            });
-            console.log('Usuário cadastrado!');
-            res.send({ msg: 'Usuário cadastrado!' });
-        } catch (error) {
-            console.error(error);
-            alert(error.message);
-        }
-    },
-
+    cadastrar, 
     // Logar conta de usuário
     async logar(req, res) {
         try {
