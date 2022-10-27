@@ -19,8 +19,9 @@ export default function Cadastro() {
 
     async function enviar(ev) {
         const formulario = ev.currentTarget;
+       
+        ev.preventDefault();
         if (formulario.checkValidity() === false) {
-            ev.preventDefault();
             ev.stopPropagation();
         }
 
@@ -30,20 +31,20 @@ export default function Cadastro() {
             if (res) {
                 alert('Usuário cadastrado!');
                 navigate('/home');
-             }
-             else {
-                 alert('Usuário NÃO cadastrado!');
-             }
-         });
+            }
+            else {
+                alert('Usuário NÃO cadastrado!');
+            }
+        });
     };
 
     return (
         <div className="fundo">
-            <div className="col-7 config-col1 bg-col1">
+            <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
 
-                <Form className="form" noValidate validated={validated} onSubmit={enviar}>
+                <Form className="formulario-cadastro" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-cadastro">
                         <h3 className="titulo-formulario-cadastro">Cadastro</h3>
                         <Form.Group className="mb-3" controlId="formBasicName">

@@ -16,9 +16,9 @@ const cadastrar = async (nome, email, senha) => {
             nome: nome,
             email: email,
         });
-        return usuario;
+        return true;
     } catch (error) {
-        return null;
+        return false;
     }
 };
 

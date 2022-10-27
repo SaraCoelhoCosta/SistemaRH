@@ -18,32 +18,25 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    function enviar(ev) {
+    async function enviar(ev) {
         const formulario = ev.currentTarget;
+
+        ev.preventDefault();
         if (formulario.checkValidity() === false) {
-            ev.preventDefault();
             ev.stopPropagation();
+            alert('Preencha os campos!');
         }
         setValidated(true);
 
-        logar(email, senha).then((res) => {
-            console.log("Teste: " + res);
-           if (res) {
-               alert('Usuário logado!');
-               navigate('/home');
+        await logar(email, senha).then((res) => {
+            if (res) {
+                alert('Usuário logado!');
+                navigate('/home');
             }
             else {
                 alert('Usuário NÃO logado!');
             }
-        }).catch((erro)=>{console.log(erro)});
-
-        /*if (logar(email, senha)) {
-            alert('Usuário logado!');
-            navigate('/home');
-        }
-        else {
-            alert('Usuário NÃO logado!');
-        }*/
+        });
     };
 
     return (
@@ -51,7 +44,7 @@ export default function Login() {
             <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
-                <Form className="form" noValidate validated={validated} onSubmit={enviar}>
+                <Form className="formulario-login" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-login">
                         <h3 className="titulo-formulario-login">Login</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">

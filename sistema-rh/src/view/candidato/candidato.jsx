@@ -1,0 +1,96 @@
+import './candidato.css';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { cadastrar } from "../../controller/candidatoController";
+
+export default function Cadastro() {
+
+    const navigate = useNavigate();
+
+    // Validação de campos
+    const [validated, setValidated] = useState(false);
+
+    // Cadastro
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [telefone, setTelefone] = useState("");
+
+    async function enviar(ev) {
+        const formulario = ev.currentTarget;
+
+        ev.preventDefault();
+        if (formulario.checkValidity() === false) {
+            ev.stopPropagation();
+        }
+
+        setValidated(true);
+
+        await cadastrar(nome, email, telefone).then((res) => {
+            if (res) {
+                alert('Candidato cadastrado!');
+                navigate('/home');
+            }
+            else {
+                alert('Candidato NÃO cadastrado!');
+            }
+        });
+
+    };
+
+    return (
+    <div className="fundo">
+            <Form noValidate validated={validated} onSubmit={enviar}>
+                <div className="conteudo-formulario-cadastro">
+                    <h3 className="titulo-formulario-cadastro">Cadastrar candidato</h3>
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Label>Nome</Form.Label>
+                        <Form.Control type="text" required
+                            onChange={(e) => setNome(e.target.value)} placeholder="Insira seu nome completo" />
+                        <Form.Control.Feedback></Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Campo nome é obrigatório.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>E-mail</Form.Label>
+                        <Form.Control type="email" required
+                            onChange={(e) => setEmail(e.target.value)} placeholder="Insira seu e-mail" />
+                        <Form.Control.Feedback></Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Campo e-mail é obrigatório.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicPhone">
+                        <Form.Label>Telefone</Form.Label>
+                        <Form.Control type="phone"
+                            onChange={(e) => setTelefone(e.target.value)} required placeholder="Telefone" />
+                        <Form.Control.Feedback></Form.Control.Feedback>
+                        <Form.Control.Feedback type="invalid">
+                            Campo telefone é obrigatório.
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Row>
+                        <Col>
+                            <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
+                                <Button variant="outline-danger" type="submit">
+                                    Cancelar
+                                </Button>
+                            </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
+                                <Button variant="primary" type="submit">
+                                    Cadastrar
+                                </Button>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                </div>
+            </Form>
+        </div>
+    );
+}

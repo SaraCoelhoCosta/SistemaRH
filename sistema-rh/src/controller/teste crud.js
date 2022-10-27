@@ -1,13 +1,13 @@
 import { collection, addDoc, getDoc, doc, deleteDoc, updateDoc, getDocs } from 'firebase/firestore';
 import { db } from './config';
 
-const table = 'usuarios'
+const table = 'candidato'
 const User = collection(db, table);
 
 module.exports = {
 
     // Cria
-    async create(req, res) {
+    async cadastrar(req, res) {
         const data = req.body;
         await addDoc(User, data);
         res.send({ msg: 'Usuário adicionado!' });
