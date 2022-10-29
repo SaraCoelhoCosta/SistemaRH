@@ -1,0 +1,29 @@
+.fundo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-vaga {
+    width: 50vw;
+    height: auto;
+}
+
+.conteudo-formulario-vaga {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+.titulo-formulario-vaga {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+}
+
+label {
+    font-weight: 500;
+}
