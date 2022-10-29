@@ -68,8 +68,8 @@ export default function Cadastro() {
     return (
         <div className="fundo">
             <Form noValidate validated={validated} onSubmit={enviar}>
-                <div className="conteudo-formulario-cadastro">
-                    <h3 className="titulo-formulario-cadastro">Cadastrar candidato</h3>
+                <div className="conteudo-formulario-candidato">
+                    <h3 className="titulo-formulario-candidato">Cadastrar candidato</h3>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Nome</Form.Label>
                         <Form.Control type="text" required value={nome}
