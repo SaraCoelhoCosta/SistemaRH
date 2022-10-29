@@ -13,6 +13,7 @@ export default function RoutesRH() {
                 <Route exact path="/cadastro" element={< Cadastro />} />
                 <Route exact path="/home" element={< Home />} />
                 <Route exact path="/candidato" element={< Candidato />} />
+                <Route exact path="/candidato/:id" element={< Candidato />} />
             </Routes>
         </BrowserRouter>
     );

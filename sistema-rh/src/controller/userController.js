@@ -33,13 +33,12 @@ const logar = async (email, senha) => {
 };
 
 // Sair da conta do usuário
-const sair = async (req, res) => {
+const sair = async () => {
     try {
         await signOut(auth);
-        res.send({ msg: 'Usuário saiu!' });
+        return true;
     } catch (error) {
-        console.error(error);
-        alert(error.message);
+        return false;
     }
 };
 

@@ -3,11 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { cadastrar } from "../../controller/candidatoController";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { cadastrar, atualizar, listarUm } from "../../controller/candidatoController";
 
 export default function Cadastro() {
+
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -19,6 +21,16 @@ export default function Cadastro() {
     const [email, setEmail] = useState("");
     const [telefone, setTelefone] = useState("");
 
+    useEffect(() => {
+        if (id) {
+            listarUm(id).then((res) => {
+                setNome(res.get('nome'));
+                setEmail(res.get('email'));
+                setTelefone(res.get('telefone'));
+            });
+        }
+    }, [id]);
+
     async function enviar(ev) {
         const formulario = ev.currentTarget;
 
@@ -29,26 +41,38 @@ export default function Cadastro() {
 
         setValidated(true);
 
-        await cadastrar(nome, email, telefone).then((res) => {
-            if (res) {
-                alert('Candidato cadastrado!');
-                navigate('/home');
-            }
-            else {
-                alert('Candidato NÃO cadastrado!');
-            }
-        });
+        if (id) {
+            await atualizar(id, nome, email, telefone).then((res) => {
+                if (res) {
+                    alert('Candidato atualizado!');
+                    navigate('/home');
+                }
+                else {
+                    alert('Candidato NÃO atualizado!');
+                }
+            });
+        } else {
+            await cadastrar(nome, email, telefone).then((res) => {
+                if (res) {
+                    alert('Candidato cadastrado!');
+                    navigate('/home');
+                }
+                else {
+                    alert('Candidato NÃO cadastrado!');
+                }
+            });
+        }
 
     };
 
     return (
-    <div className="fundo">
+        <div className="fundo">
             <Form noValidate validated={validated} onSubmit={enviar}>
                 <div className="conteudo-formulario-cadastro">
                     <h3 className="titulo-formulario-cadastro">Cadastrar candidato</h3>
                     <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Nome</Form.Label>
-                        <Form.Control type="text" required
+                        <Form.Control type="text" required value={nome}
                             onChange={(e) => setNome(e.target.value)} placeholder="Insira seu nome completo" />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
@@ -57,7 +81,7 @@ export default function Cadastro() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>E-mail</Form.Label>
-                        <Form.Control type="email" required
+                        <Form.Control type="email" required value={email}
                             onChange={(e) => setEmail(e.target.value)} placeholder="Insira seu e-mail" />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
@@ -66,7 +90,7 @@ export default function Cadastro() {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPhone">
                         <Form.Label>Telefone</Form.Label>
-                        <Form.Control type="phone"
+                        <Form.Control type="phone" value={telefone}
                             onChange={(e) => setTelefone(e.target.value)} required placeholder="Telefone" />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
