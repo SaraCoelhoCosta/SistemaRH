@@ -1,21 +1,26 @@
-import './home.css';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import "./home.css";
+import { useNavigate } from "react-router-dom";
+import { sair } from "../../controller/userController";
+import Sidebar from "../components/sidebar";
+
 
 export default function Home() {
-    return (
-        <div className="card-formulario-home">
-            <Form>
-                <div className="conteudo-formulario-home">
-                    <h3 className="titulo-formulario-home">Home</h3>
+    const navigate = useNavigate();
 
-                    <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                        <Button variant="danger" type="submit">
-                            Sair
-                        </Button>
-                    </Form.Group>
-                </div>
-            </Form>
+    async function enviar(ev) {
+        ev.preventDefault();
+        await sair().then((res) => {
+            if (res) {
+                navigate('/');
+            }
+        });
+    };
+
+    return (
+        <div className="home-tela">
+            
+            <Sidebar />
         </div>
+        
     );
 }

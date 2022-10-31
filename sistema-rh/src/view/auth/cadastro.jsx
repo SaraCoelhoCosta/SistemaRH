@@ -39,7 +39,7 @@ export default function Cadastro() {
     };
 
     return (
-        <div className="fundo">
+        <div className="fundo2">
             <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
