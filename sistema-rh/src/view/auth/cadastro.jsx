@@ -44,7 +44,7 @@ export default function Cadastro() {
             </div>
             <div className="col-5 config-col2">
 
-                <Form className="formulario-cadastro" noValidate validated={validated} onSubmit={enviar}>
+                <Form className="form-cadastro" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-cadastro">
                         <h3 className="titulo-formulario-cadastro">Cadastro</h3>
                         <Form.Group className="mb-3" controlId="formBasicName">

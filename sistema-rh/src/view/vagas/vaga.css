@@ -6,12 +6,17 @@
     height: 100vh;
 }
 
-.conteudo-formulario-candidato {
+.form-vaga {
+    width: 50vw;
+    height: auto;
+}
+
+.conteudo-formulario-vaga {
     padding-left: 12%;
     padding-right: 12%;
 }
 
-.titulo-formulario-candidato {
+.titulo-formulario-vaga {
     text-align: center;
     margin-bottom: 1em;
     font-size: 24px;

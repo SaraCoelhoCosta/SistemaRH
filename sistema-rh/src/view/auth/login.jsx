@@ -44,7 +44,7 @@ export default function Login() {
             <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">
-                <Form className="formulario-login" noValidate validated={validated} onSubmit={enviar}>
+                <Form className="form-login" noValidate validated={validated} onSubmit={enviar}>
                     <div className="conteudo-formulario-login">
                         <h3 className="titulo-formulario-login">Login</h3>
                         <Form.Group className="mb-3" controlId="formBasicEmail">

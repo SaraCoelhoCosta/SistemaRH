@@ -1,13 +1,13 @@
-import './candidato.css';
+import './vaga.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cadastrar, atualizar, listarUm } from "../../controller/candidatoController";
+import { cadastrar, atualizar, listarUm } from "../../controller/vagaController";
 
-export default function Cadastro() {
+export default function Vaga() {
 
     const { id } = useParams();
 
@@ -17,16 +17,14 @@ export default function Cadastro() {
     const [validated, setValidated] = useState(false);
 
     // Cadastro
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [telefone, setTelefone] = useState("");
+    const [titulo, setTitulo] = useState("");
+    const [descricao, setDescricao] = useState("");
 
     useEffect(() => {
         if (id) {
             listarUm(id).then((res) => {
-                setNome(res.get('nome'));
-                setEmail(res.get('email'));
-                setTelefone(res.get('telefone'));
+                setTitulo(res.get('titulo'));
+                setDescricao(res.get('descricao'));
             });
         }
     }, [id]);
@@ -42,59 +40,49 @@ export default function Cadastro() {
         setValidated(true);
 
         if (id) {
-            await atualizar(id, nome, email, telefone).then((res) => {
+            await atualizar(id, titulo, descricao).then((res) => {
                 if (res) {
-                    alert('Candidato atualizado!');
+                    alert('Vaga atualizada!');
                     navigate('/home');
                 }
                 else {
-                    alert('Candidato NÃO atualizado!');
+                    alert('Vaga NÃO atualizada!');
                 }
             });
         } else {
-            await cadastrar(nome, email, telefone).then((res) => {
+            await cadastrar(titulo, descricao).then((res) => {
                 if (res) {
-                    alert('Candidato cadastrado!');
+                    alert('Vaga cadastrada!');
                     navigate('/home');
                 }
                 else {
-                    alert('Candidato NÃO cadastrado!');
+                    alert('Vaga NÃO cadastrada!');
                 }
             });
         }
-
     };
 
     return (
         <div className="fundo">
-            <Form noValidate validated={validated} onSubmit={enviar}>
-                <div className="conteudo-formulario-candidato">
-                    <h3 className="titulo-formulario-candidato">Cadastrar candidato</h3>
-                    <Form.Group className="mb-3" controlId="formBasicName">
-                        <Form.Label>Nome</Form.Label>
-                        <Form.Control type="text" required value={nome}
-                            onChange={(e) => setNome(e.target.value)} placeholder="Insira seu nome completo" />
+            <Form className="form-vaga" noValidate validated={validated} onSubmit={enviar}>
+                <div className="conteudo-formulario-vaga">
+                    <h3 className="titulo-formulario-vaga">Qual vaga gostaria de criar?</h3>
+                    <Form.Group className="mb-3" controlId="formBasicTitle">
+                        <Form.Label>Título da vaga</Form.Label>
+                        <Form.Control type="text" required value={titulo} maxlength="30"
+                            onChange={(e) => setTitulo(e.target.value)} placeholder="Insira o título da vaga" />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
-                            Campo nome é obrigatório.
+                            Campo título é obrigatório.
                         </Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>E-mail</Form.Label>
-                        <Form.Control type="email" required value={email}
-                            onChange={(e) => setEmail(e.target.value)} placeholder="Insira seu e-mail" />
+                    <Form.Group className="mb-3" controlId="formBasicDescription">
+                        <Form.Label>Descrição da vaga</Form.Label>
+                        <Form.Control as="textarea" rows={5} required value={descricao}
+                            onChange={(e) => setDescricao(e.target.value)} placeholder="Insira uma descrição" />
                         <Form.Control.Feedback></Form.Control.Feedback>
                         <Form.Control.Feedback type="invalid">
-                            Campo e-mail é obrigatório.
-                        </Form.Control.Feedback>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPhone">
-                        <Form.Label>Telefone</Form.Label>
-                        <Form.Control type="phone" value={telefone}
-                            onChange={(e) => setTelefone(e.target.value)} required placeholder="Telefone" />
-                        <Form.Control.Feedback></Form.Control.Feedback>
-                        <Form.Control.Feedback type="invalid">
-                            Campo telefone é obrigatório.
+                            Campo descrição é obrigatório.
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Row>

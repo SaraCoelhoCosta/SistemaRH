@@ -1,0 +1,10 @@
+#rodape-container {
+    display: flexbox;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+}

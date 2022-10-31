@@ -4,6 +4,8 @@ import Login from './view/auth/login';
 import Cadastro from './view/auth/cadastro';
 import Home from './view/home/home';
 import Candidato from './view/candidato/candidato';
+import Vaga from './view/vagas/vaga';
+import VagaObjetivo from './view/vagas/vaga-objetivo';
 
 export default function RoutesRH() {
     return (
@@ -13,6 +15,9 @@ export default function RoutesRH() {
                 <Route exact path="/cadastro" element={< Cadastro />} />
                 <Route exact path="/home" element={< Home />} />
                 <Route exact path="/candidato" element={< Candidato />} />
+                <Route exact path="/candidato/:id" element={< Candidato />} />
+                <Route exact path="/vaga" element={< Vaga />} />
+                <Route exact path="/vagaObjetivo" element={< VagaObjetivo />} />
             </Routes>
         </BrowserRouter>
     );
