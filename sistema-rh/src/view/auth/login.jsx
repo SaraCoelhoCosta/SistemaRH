@@ -40,7 +40,7 @@ export default function Login() {
     };
 
     return (
-        <div className="fundo1">
+        <div className="fundo-login">
             <div className="col-7 config-col1 bg-col">
             </div>
             <div className="col-5 config-col2">

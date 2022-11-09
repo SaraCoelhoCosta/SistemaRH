@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { cadastrar, atualizar, listarUm } from "../../controller/vagaController";
+import Sidebar from "../components/sidebar";
 
 export default function VagaObjetivo() {
 
@@ -64,72 +65,79 @@ export default function VagaObjetivo() {
 
     return (
         <div className="fundo">
+            <div className="menu">
+                <Sidebar />
+            </div>
             <Form className="form-vaga" noValidate validated={validated} onSubmit={enviar}>
-                <div className="conteudo-formulario-vaga">
-                    <h3 className="titulo-formulario-vaga">Quais os objetivos da vaga?</h3>
+                <div className="conteudo-vaga1">
+                    <div className="conteudo-formulario-vaga">
+                        <h1 classname="titulo-tela">Criar Vaga</h1>
 
-                    <Form.Group className="mb-3" controlId="formBasicTitle">
+                        <h3 className="titulo-formulario-vaga">Quais os objetivos da vaga?</h3>
+
+                        <Form.Group className="mb-3" controlId="formBasicTitle">
+                            <Row>
+                                <Col>
+                                    <Form.Label>Colaborativo</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Range min="0" max="5" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Independente</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>Reservado</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Range min="0" max="5" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Sociável</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>Intenso</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Range min="0" max="5" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Paciente</Form.Label>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <Form.Label>Impulsivo</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Range min="0" max="5" />
+                                </Col>
+                                <Col>
+                                    <Form.Label>Vigilante</Form.Label>
+                                </Col>
+                            </Row>
+                        </Form.Group>
                         <Row>
                             <Col>
-                                <Form.Label>Colaborativo</Form.Label>
+                                <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
+                                    <Button variant="outline-danger" type="submit">
+                                        Cancelar
+                                    </Button>
+                                </Form.Group>
                             </Col>
                             <Col>
-                                <Form.Range min="0" max="5" />
-                            </Col>
-                            <Col>
-                                <Form.Label>Independente</Form.Label>
+                                <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
+                                    <Button variant="primary" type="submit">
+                                        Próxima etapa
+                                    </Button>
+                                </Form.Group>
                             </Col>
                         </Row>
-                        <Row>
-                            <Col>
-                                <Form.Label>Reservado</Form.Label>
-                            </Col>
-                            <Col>
-                                <Form.Range min="0" max="5" />
-                            </Col>
-                            <Col>
-                                <Form.Label>Sociável</Form.Label>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Label>Intenso</Form.Label>
-                            </Col>
-                            <Col>
-                                <Form.Range min="0" max="5" />
-                            </Col>
-                            <Col>
-                                <Form.Label>Paciente</Form.Label>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                                <Form.Label>Impulsivo</Form.Label>
-                            </Col>
-                            <Col>
-                                <Form.Range min="0" max="5" />
-                            </Col>
-                            <Col>
-                                <Form.Label>Vigilante</Form.Label>
-                            </Col>
-                        </Row>
-                    </Form.Group>
-                    <Row>
-                        <Col>
-                            <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                <Button variant="outline-danger" type="submit">
-                                    Cancelar
-                                </Button>
-                            </Form.Group>
-                        </Col>
-                        <Col>
-                            <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                <Button variant="primary" type="submit">
-                                    Cadastrar
-                                </Button>
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                    </div>
                 </div>
             </Form>
         </div>

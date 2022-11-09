@@ -14,7 +14,7 @@ export const SidebarData = [
     {
         title: "Cadastrar Candidatos",
         icon: <PersonOutlineOutlinedIcon />,
-        link: "/cadastroCandidato"
+        link: "/candidato"
     },
     {
         title: "Revisar Candidatos",
@@ -22,13 +22,23 @@ export const SidebarData = [
         link: "/revisaoCandidato"
     },
     {
-        title: "Vagas",
+        title: "Criar Vaga",
         icon: <PeopleAltOutlinedIcon />,
-        link: "/vagas"
+        link: "/vaga"
+    },
+    {
+        title: "Objetivo da Vaga",
+        icon: <PeopleAltOutlinedIcon />,
+        link: "/vagaObjetivo"
+    },
+    {
+        title: "Adicionar Candidato",
+        icon: <PeopleAltOutlinedIcon />,
+        link: "/adicionarCandidato"
     },
     {
         title: "Configurações",
         icon: <SettingsOutlinedIcon />,
-        link: "/config"
+        link: "#"
     },
 ]

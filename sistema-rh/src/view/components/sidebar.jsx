@@ -29,7 +29,7 @@ export default function Sidebar() {
                 <img src="http://localhost:3000/recrutamento1.png" alt="Logo" width="200px" height="100px" />
             </div>
 
-            <div className="menu">
+            <div className="sidebar-menu">
                 <h5 classname="titulo-secao">Menu</h5>
                 <ul className="sidebarList">
                     {SidebarData.map((valor, key) => {

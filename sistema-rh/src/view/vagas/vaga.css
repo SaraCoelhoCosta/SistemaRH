@@ -11,6 +11,10 @@
     height: auto;
 }
 
+.conteudo-vaga1 {
+    margin: 20px;
+}
+
 .conteudo-formulario-vaga {
     padding-left: 12%;
     padding-right: 12%;
@@ -22,6 +26,7 @@
     font-size: 24px;
     color: rgb(0, 0, 0);
     font-weight: 900;
+    margin-top: 40px;
 }
 
 label {
