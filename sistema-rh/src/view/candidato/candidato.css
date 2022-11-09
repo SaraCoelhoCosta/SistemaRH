@@ -1,9 +1,18 @@
-.fundo {
+.fundo-candidato {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
+}
+
+.form-cadCandidato {
+    width: 50vw;
+    height: auto;
+}
+
+.conteudo-candidato {
+    margin: 20px;
 }
 
 .conteudo-formulario-candidato {
