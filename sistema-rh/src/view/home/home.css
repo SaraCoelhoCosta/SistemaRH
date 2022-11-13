@@ -1,33 +1,90 @@
-.home-tela {
+.fundo-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 700px;
+    left: 230px;
+    position: absolute;
 }
 
-
-body {
-    margin: 0;
-    padding: 0;
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
-
-.sidebar-home {
-    margin-bottom: 10px;
-}
-
 
 /*
-.button-sair {
-    text-decoration: none;
-}
-
-.titulo-formulario-home {
-    text-align: center;
-    margin-bottom: 1em;
-    font-size: 24px;
-    color: rgb(34, 34, 34);
-    font-weight: 800;
-}
-
-label {
-    font-weight: 600;
+.title-tela {
+    color: rgb(20, 28, 184);
 }
 */
+
+.form-dash {
+    width: 40vw;
+    height: 35vh;
+    text-align: center;
+}
+
+
+.titulo-page {
+    margin: 40px;
+    margin-bottom: 30px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;    
+}
+
+
+.conteudo-home {
+    margin: 30px;
+}
+
+.icone {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+
+.button-esq {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    display: grid;
+    height: 100px;
+    width: 250px;
+    padding: 25px 50px;
+}
+
+.button-dir {
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    padding: 25px 50px;
+    margin-left: 12px;
+}
+
+.button-lista {
+    color: rgb(0, 28, 128);
+}
+
+.icone-lista {
+    color: red;
+    margin-right: 15px;
+}
+
+.icone2-lista {
+    color: rgb(7, 162, 25);
+    margin-right: 20px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+}
+
+.title5 {
+    color: rgb(0, 28, 128);
+}
