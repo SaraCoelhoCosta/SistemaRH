@@ -126,6 +126,7 @@ export default function Home() {
                         </Form>
                     </Col>
                 </Row>
+                
                 <Row>
                     <Col>                       
                         <Form className="form-dash">
@@ -173,9 +174,9 @@ export default function Home() {
                                 </Table>
                                 <h5 className="title5">Ver todas</h5>
                             </div>
-                        </Form>
-                       
+                        </Form>          
                     </Col>
+
                     <Col>
                         <Form className="form-dash">
                             <div className="conteudo-home">

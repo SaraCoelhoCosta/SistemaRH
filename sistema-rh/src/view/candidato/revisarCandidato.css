@@ -1,0 +1,56 @@
+.fundo-revisarCand {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-left: 300px;
+}
+
+.form-vagaCand {
+    width: 50vw;
+    height: auto;
+}
+
+.conteudo-candVaga {
+    margin: 30px;
+}
+
+.title-tableCand {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.title-rCand {
+    color: rgb(14, 48, 170);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+.titulo1-rCand {
+    margin-top: 20px;
+    margin-bottom: 1px;
+    margin-left: 13px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;    
+}
+
+.titulo-rCand {
+    margin-bottom: 15px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;    
+}
+
+.table-candidatos {
+    width: 75vw;
+    align-items: center;
+}
+
+.pendente {
+    color: red;
+}
+
+.feito {
+    color: green;
+}
