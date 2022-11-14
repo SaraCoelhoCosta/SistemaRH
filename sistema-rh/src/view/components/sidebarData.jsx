@@ -4,6 +4,8 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import CrisisAlertOutlinedIcon from '@mui/icons-material/CrisisAlertOutlined';
 
 export const SidebarData = [
     {
@@ -23,12 +25,12 @@ export const SidebarData = [
     },
     {
         title: "Criar Vaga",
-        icon: <PeopleAltOutlinedIcon />,
+        icon: <WorkOutlineOutlinedIcon />,
         link: "/vaga"
     },
     {
         title: "Objetivo da Vaga",
-        icon: <PeopleAltOutlinedIcon />,
+        icon: <CrisisAlertOutlinedIcon />,
         link: "/vagaObjetivo"
     },
     {

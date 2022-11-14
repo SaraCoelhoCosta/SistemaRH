@@ -8,6 +8,7 @@ import Vaga from './view/vagas/vaga';
 import VagaObjetivo from './view/vagas/vaga-objetivo';
 import AdicionarCandidato from './view/vagas/adicionar-candidatos';
 import RevisarCandidato from './view/candidato/revisarCandidato';
+import VisualizarCandidato from './view/candidato/visualizarCandidato';
 
 
 export default function RoutesRH() {
@@ -23,6 +24,7 @@ export default function RoutesRH() {
                 <Route exact path="/vagaObjetivo" element={< VagaObjetivo />} />
                 <Route exact path="/adicionarCandidato" element={< AdicionarCandidato />} />
                 <Route exact path="/revisarCandidato" element={< RevisarCandidato />} />
+                <Route exact path="/visualizarCandidato" element={< VisualizarCandidato />} />
             </Routes>
         </BrowserRouter>
     );

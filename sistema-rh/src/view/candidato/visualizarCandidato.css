@@ -1,0 +1,65 @@
+.fundo-visuCandidato {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin-left: 320px;
+}
+
+.form-visuCandidato {
+    width: 50vw;
+    height: auto;
+}
+
+.conteudo-formulario-candidato {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+.title-vCand {
+    color: rgb(14, 48, 170);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+.titulo1-vCand {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;    
+}
+
+.titulo2-vCand {
+    margin-top: 20px;
+    margin-left: 13px;
+    color: black;
+    font-size: 20px;
+}
+
+.dados-vcandidato {
+    color: black;
+    margin-left: 13px;
+}
+
+.titulo-rCand {
+    margin-bottom: 15px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;    
+}
+
+.buttons-visu {
+    margin-top: 50px;
+}
+
+.botao-esquerdo {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.botao-direito {
+    margin-left: 30px;
+    width: 250px;
+}
