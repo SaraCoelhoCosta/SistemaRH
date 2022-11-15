@@ -21,7 +21,7 @@ export const SidebarData = [
     {
         title: "Revisar Candidatos",
         icon: <FolderOutlinedIcon />,
-        link: "/revisaoCandidato"
+        link: "/revisarCandidato"
     },
     {
         title: "Criar Vaga",

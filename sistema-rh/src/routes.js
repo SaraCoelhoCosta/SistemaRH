@@ -23,7 +23,7 @@ export default function RoutesRH() {
                 <Route exact path="/vaga" element={< Vaga />} />
                 <Route exact path="/vagaObjetivo" element={< VagaObjetivo />} />
                 <Route exact path="/adicionarCandidato" element={< AdicionarCandidato />} />
-                <Route exact path="/revisarCandidato" element={< RevisarCandidato />} />
+                <Route exact path="/revisarCandidato/:id" element={< RevisarCandidato />} />
                 <Route exact path="/visualizarCandidato" element={< VisualizarCandidato />} />
             </Routes>
         </BrowserRouter>

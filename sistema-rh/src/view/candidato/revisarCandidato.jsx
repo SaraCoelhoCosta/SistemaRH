@@ -2,13 +2,28 @@ import './revisarCandidato.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import React from "react";
 import Sidebar from "../components/sidebar";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { listarUm } from '../../controller/vagaController';
+
 
 export default function RevisarCandidato() {
+    const { id } = useParams();
+
+    const [titulo, setTitulo] = useState("");
+    const [objetivos, setObjetivos] = useState({});
+
+    useEffect(() => {
+        if (id) {
+            listarUm(id).then((res) => {
+                setTitulo(res.get('titulo'));
+                setObjetivos(res.get('objetivo'));
+            });
+        }
+    }, [id]);
 
     return (
         <div className="fundo-revisarCand">
@@ -22,7 +37,7 @@ export default function RevisarCandidato() {
             </Row>
             <Row>
                 <Col>
-                    <h3 className="titulo1-rCand">Vaga: Designer</h3>
+                    <h3 className="titulo1-rCand">Vaga: {titulo}</h3>
                 </Col>
             </Row>
             <Row>
@@ -30,7 +45,7 @@ export default function RevisarCandidato() {
                     <Form className="form-vagaCand" >
                         <div className="conteudo-candVaga">
                             <div className="conteudo-formulario-vaga">
-                                <p className="title-tableCand">João da Silva</p>
+                                
                                 <Form.Group className="mb-3" controlId="formBasicTitle">
                                    
                                     <Row>
@@ -38,7 +53,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Colaborativo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value={objetivos['colaborativo/independente']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Independente</Form.Label>
@@ -49,7 +64,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Reservado</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value={objetivos['reservado/sociavel']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Sociável</Form.Label>
@@ -60,7 +75,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Intenso</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value={objetivos['intenso/paciente']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Paciente</Form.Label>
@@ -71,29 +86,14 @@ export default function RevisarCandidato() {
                                             <Form.Label>Impulsivo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value={objetivos['impulsivo/vigilante']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Vigilante</Form.Label>
                                         </Col>
                                     </Row>
                                 </Form.Group>
-                                <Row>
-                                    <Col>
-                                        <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                            <Button variant="outline-danger" type="submit">
-                                                Cancelar
-                                            </Button>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col>
-                                        <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                            <Button variant="primary" type="submit">
-                                                Próxima etapa
-                                            </Button>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
+                    
                             </div>
                         </div>
                     </Form>
@@ -116,129 +116,39 @@ export default function RevisarCandidato() {
                                     <th>Entrevistar</th>
                                     <th>Visualizar</th>
                                 </tr>
-                                <tr>
-                                    <td><Form.Check aria-label="option 1" /></td>
-                                    <td>João da Silva</td>
-                                    <td>joao@gmail.com</td>
-                                    <td className="feito">Feito</td>
-                                    <td>10</td>
-                                    <td>9</td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Sim
-                                        </ToggleButton>
-                                    </td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Visualizar
-                                        </ToggleButton>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><Form.Check aria-label="option 1" /></td>
-                                    <td>João da Silva</td>
-                                    <td>joao@gmail.com</td>
-                                    <td className="feito">Feito</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Sim
-                                        </ToggleButton>
-                                    </td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Visualizar
-                                        </ToggleButton>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><Form.Check aria-label="option 1" /></td>
-                                    <td>João da Silva</td>
-                                    <td>joao@gmail.com</td>
-                                    <td className="pendente">Pendente</td>
-                                    <td>7</td>
-                                    <td>7</td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="outline-primary"
-                                            value="1"
-                                        >
-                                            Não
-                                        </ToggleButton>
-                                    </td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="outline-primary"
-                                            value="1"
-                                        >
-                                            Visualizar
-                                        </ToggleButton>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><Form.Check aria-label="option 1" /></td>
-                                    <td>João da Silva</td>
-                                    <td>joao@gmail.com</td>
-                                    <td className="pendente">Pendente</td>
-                                    <td>5</td>
-                                    <td>5</td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="outline-primary"
-                                            value="1"
-                                        >
-                                            Não
-                                        </ToggleButton>
-                                    </td>
-                                    <td>
-                                        <ToggleButton
-                                            className="mb-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Visualizar
-                                        </ToggleButton>
-                                    </td>
-                                </tr>    
                             </thead>
                             <tbody>
-                                                          
+                                     <tr>
+                                     <td><Form.Check aria-label="option 1" /></td>
+                                    <td>João da Silva</td>
+                                    <td>joao@gmail.com</td>
+                                    <td className="pendente">Pendente</td>
+                                    <td>5</td>
+                                    <td>5</td>
+                                    <td>
+                                        <ToggleButton
+                                            className="mb-2"
+                                            id="toggle-check"
+                                            type="checkbox"
+                                            variant="outline-primary"
+                                            value="1"
+                                        >
+                                            Não
+                                        </ToggleButton>
+                                    </td>
+                                
+                                     <td>
+                                        <ToggleButton
+                                            className="mb-2"
+                                            id="toggle-check"
+                                            type="checkbox"
+                                            variant="primary"
+                                            value="1"
+                                        >
+                                            Visualizar
+                                        </ToggleButton>
+                                    </td>
+                                </tr>                     
                             </tbody>
                         </Table>
                     </div>

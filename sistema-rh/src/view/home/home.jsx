@@ -1,7 +1,8 @@
 import "./home.css";
 import Carousel from "react-bootstrap/Carousel";
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
+//import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
@@ -9,72 +10,46 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import Sidebar from "../components/sidebar";
+import { listarTodos } from "../../controller/vagaController";
+import { useState, useEffect } from "react";
 //import Footer from "../components/footer";
 
 
 export default function Home() {
+    const [vagas, setVagas] = useState([]);
+
+    useEffect(() => {
+        listarTodos().then((res) => {
+            setVagas(res);
+        });
+    });
 
     return (
         <div className="fundo-dashboard">
             <div className="menu">
                 <Sidebar />
             </div>
-            
+
             <div>
                 <Row>
-                    <Col>                        
+                    <Col>
                         <Carousel variant="dark">
-                            <Carousel.Item interval={10000000000000}>
-                                <Form className="form-dash">
-                                    <div className="conteudo-home">
-                                        <h3 className="titulo-page">Atividades Recentes nas Vagas</h3>                                        
-                                        <Button className="button-esq" variant="outline-dark" size="lg">
-                                            Gerente de Projetos
-                                        </Button>{' '}
-                                        <Button className="button-dir" variant="outline-dark" size="lg">
-                                            Designer
-                                        </Button>{' '}
-                                    </div>
-                                </Form>
-                                <Carousel.Caption>
-                                    <h5 className="title5">Ver todas</h5>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item interval={10000000000000}>
-                                <Form className="form-dash">
-                                    <div className="conteudo-home">
-                                        <h3 className="titulo-page">Atividades Recentes nas Vagas</h3>
-                                        
-                                        <Button className="button-esq" variant="outline-dark" size="lg">
-                                            Gerente de Projetos
-                                        </Button>{' '}
-                                        <Button className="button-dir" variant="outline-dark" size="lg">
-                                            Designer
-                                        </Button>{' '}
-
-                                    </div>
-                                </Form>
-                                <Carousel.Caption>
-                                    <h5 className="title5">Ver todas</h5>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item interval={10000000000000}>
-                                <Form className="form-dash">
-                                    <div className="conteudo-home">
-                                        <h3 className="titulo-page">Atividades Recentes nas Vagas</h3>                                        
-                                        <Button className="button-esq" variant="outline-dark" size="lg">
-                                            Gerente de Projetos
-                                        </Button>{' '}
-                                        <Button className="button-dir" variant="outline-dark" size="lg">
-                                            Designer
-                                        </Button>{' '}
-                                    </div>
-                                </Form>
-                                <Carousel.Caption>
-                                    <h5 className="title5">Ver todas</h5>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        </Carousel>                        
+                            {vagas.map(vaga => (
+                                <Carousel.Item interval={10000000000000}>
+                                    <Form className="form-dash" key={vaga.id} onSubmit="enviar">
+                                        <div className="conteudo-home">
+                                            <h3 className="titulo-page">Atividades Recentes nas Vagas</h3>
+                                            <Link className="button-esq" variant="outline-dark" size="lg" to={`/revisarCandidato/${vaga.id}`} >
+                                                {vaga.get('titulo')}
+                                            </Link>
+                                        </div>
+                                    </Form>
+                                </Carousel.Item>
+                            ))}
+                            <Carousel.Caption>
+                                <h5 className="title5">Ver todas</h5>
+                            </Carousel.Caption>
+                        </Carousel>
                     </Col>
 
                     <Col>
@@ -126,12 +101,12 @@ export default function Home() {
                         </Form>
                     </Col>
                 </Row>
-                
+
                 <Row>
-                    <Col>                       
+                    <Col>
                         <Form className="form-dash">
                             <div className="conteudo-home">
-                                <h3 className="titulo-page">Finalizados Recentemente</h3>                                
+                                <h3 className="titulo-page">Finalizados Recentemente</h3>
                                 <Table striped bordered hover size="sm">
                                     <thead>
                                         <tr>
@@ -174,13 +149,13 @@ export default function Home() {
                                 </Table>
                                 <h5 className="title5">Ver todas</h5>
                             </div>
-                        </Form>          
+                        </Form>
                     </Col>
 
                     <Col>
                         <Form className="form-dash">
                             <div className="conteudo-home">
-                                <h3 className="titulo-page">Finalizados Recentemente</h3>                                
+                                <h3 className="titulo-page">Finalizados Recentemente</h3>
                                 <Table striped bordered hover size="sm">
                                     <thead>
                                         <tr>
@@ -226,7 +201,7 @@ export default function Home() {
                         </Form>
                     </Col>
                 </Row>
-            </div>  
-        </div>    
+            </div>
+        </div>
     );
 }
