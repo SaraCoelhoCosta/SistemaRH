@@ -39,7 +39,7 @@ export default function Home() {
                                     <Form className="form-dash" key={vaga.id} onSubmit="enviar">
                                         <div className="conteudo-home">
                                             <h3 className="titulo-page">Atividades Recentes nas Vagas</h3>
-                                            <Link className="button-esq" variant="outline-dark" size="lg" to={`/revisarCandidato/${vaga.id}`} >
+                                            <Link className="button-vg" variant="outline-dark" size="lg" to={`/revisarCandidato/${vaga.id}`} >
                                                 {vaga.get('titulo')}
                                             </Link>
                                         </div>
