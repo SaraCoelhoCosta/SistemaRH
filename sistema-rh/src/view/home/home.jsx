@@ -10,7 +10,7 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import Sidebar from "../components/sidebar";
-import { listarTodos } from "../../controller/vagaController";
+import { listarVagas } from "../../controller/vagaController";
 import { useState, useEffect } from "react";
 //import Footer from "../components/footer";
 
@@ -19,7 +19,7 @@ export default function Home() {
     const [vagas, setVagas] = useState([]);
 
     useEffect(() => {
-        listarTodos().then((res) => {
+        listarVagas().then((res) => {
             setVagas(res);
         });
     });

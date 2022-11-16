@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cadastrar, atualizar, listarUmaVaga } from "../../controller/vagaController";
+import { cadastrarVaga, atualizarVaga, listarUmaVaga } from "../../controller/vagaController";
 import Sidebar from "../components/sidebar";
 
 export default function VagaObjetivo({ dados }) {
@@ -45,7 +45,7 @@ export default function VagaObjetivo({ dados }) {
         setValidated(true);
 
         if (id) {
-            await atualizar(id, titulo, descricao).then((res) => {
+            await atualizarVaga(id, titulo, descricao).then((res) => {
                 if (res) {
                     alert('Vaga atualizada!');
                     navigate('/home');
@@ -64,7 +64,7 @@ export default function VagaObjetivo({ dados }) {
                 'impulsivo/vigilante': impVig,
             },
             );
-            await cadastrar("teste", "ABC", dados).then((res) => {
+            await cadastrarVaga("teste", "ABC", dados).then((res) => {
                 if (res) {
                     alert('Vaga cadastrada!');
                     navigate('/home');

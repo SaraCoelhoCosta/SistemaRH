@@ -4,8 +4,8 @@ import { db } from './config';
 const table = 'vagas';
 const Vagas = collection(db, table);
 
-// Cria usuário
-const cadastrar = async (titulo, descricao, dados) => {
+// Criar
+const cadastrarVaga = async (titulo, descricao, dados) => {
     if (titulo !== "" && descricao !== "") {
         try {
             await addDoc(Vagas, dados);
@@ -20,7 +20,7 @@ const cadastrar = async (titulo, descricao, dados) => {
 };
 
 // Atualiza
-const atualizar = async (id, titulo, descricao) => {
+const atualizarVaga = async (id, titulo, descricao) => {
     if (titulo !== "" && descricao !== "") {
         try {
             const vaga = doc(db, table, id);
@@ -50,14 +50,14 @@ const listarUmaVaga = async (id) => {
 };
 
 // Listar todos
-const listarTodos = async () => {
+const listarVagas = async () => {
     const todasVagas = await (await getDocs(Vagas)).docs;
     return todasVagas;
 };
 
 export {
-    cadastrar,
-    atualizar,
+    cadastrarVaga,
+    atualizarVaga,
     listarUmaVaga,
-    listarTodos,
+    listarVagas,
 }
