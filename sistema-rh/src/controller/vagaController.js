@@ -5,13 +5,10 @@ const table = 'vagas';
 const Vagas = collection(db, table);
 
 // Cria usuário
-const cadastrar = async (titulo, descricao) => {
+const cadastrar = async (titulo, descricao, dados) => {
     if (titulo !== "" && descricao !== "") {
         try {
-            await addDoc(Vagas, {
-                'titulo': titulo,
-                'descricao': descricao,
-            });
+            await addDoc(Vagas, dados);
             return true;
         } catch (error) {
             return false;
@@ -42,7 +39,7 @@ const atualizar = async (id, titulo, descricao) => {
 };
 
 // Lista apenas 1
-const listarUm = async (id) => {
+const listarUmaVaga = async (id) => {
     const dados = doc(db, table, id);
     const vaga = await getDoc(dados);
     if (vaga.exists()) {
@@ -61,6 +58,6 @@ const listarTodos = async () => {
 export {
     cadastrar,
     atualizar,
-    listarUm,
+    listarUmaVaga,
     listarTodos,
 }

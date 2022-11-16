@@ -7,7 +7,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Sidebar from "../components/sidebar";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { listarUm } from '../../controller/vagaController';
+import { listarUmaVaga } from '../../controller/vagaController';
 
 
 export default function RevisarCandidato() {
@@ -18,7 +18,7 @@ export default function RevisarCandidato() {
 
     useEffect(() => {
         if (id) {
-            listarUm(id).then((res) => {
+            listarUmaVaga(id).then((res) => {
                 setTitulo(res.get('titulo'));
                 setObjetivos(res.get('objetivo'));
             });

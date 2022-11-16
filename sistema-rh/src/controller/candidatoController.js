@@ -44,7 +44,7 @@ const atualizar = async (id, nome, email, telefone) => {
 };
 
 // Lista apenas 1
-const listarUm = async (id) => {
+const listarUmCandidato = async (id) => {
     const dados = doc(db, table, id);
     const candidato = await getDoc(dados);
     if (candidato.exists()) {
@@ -57,5 +57,5 @@ const listarUm = async (id) => {
 export {
     cadastrar,
     atualizar,
-    listarUm,
+    listarUmCandidato,
 }

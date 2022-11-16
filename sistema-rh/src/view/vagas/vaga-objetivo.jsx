@@ -1,14 +1,14 @@
-import './vaga.css';
+import './criar-vaga.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cadastrar, atualizar, listarUm } from "../../controller/vagaController";
+import { cadastrar, atualizar, listarUmaVaga } from "../../controller/vagaController";
 import Sidebar from "../components/sidebar";
 
-export default function VagaObjetivo() {
+export default function VagaObjetivo({ dados }) {
 
     const { id } = useParams();
 
@@ -19,11 +19,15 @@ export default function VagaObjetivo() {
 
     // Cadastro
     const [titulo, setTitulo] = useState("");
+    const [colInd, setColInd] = useState(0);
+    const [resSoc, setResSoc] = useState(0);
+    const [impVig, setImpVig] = useState(0);
+    const [intPac, setIntPac] = useState(0);
     const [descricao, setDescricao] = useState("");
 
     useEffect(() => {
         if (id) {
-            listarUm(id).then((res) => {
+            listarUmaVaga(id).then((res) => {
                 setTitulo(res.get('titulo'));
                 setDescricao(res.get('descricao'));
             });
@@ -51,7 +55,16 @@ export default function VagaObjetivo() {
                 }
             });
         } else {
-            await cadastrar(titulo, descricao).then((res) => {
+
+            dados.set(
+                'objetivo', {
+                'colaborativo/independente': colInd,
+                'reservado/sociavel': resSoc,
+                'intenso/paciente': intPac,
+                'impulsivo/vigilante': impVig,
+            },
+            );
+            await cadastrar("teste", "ABC", dados).then((res) => {
                 if (res) {
                     alert('Vaga cadastrada!');
                     navigate('/home');
@@ -81,7 +94,8 @@ export default function VagaObjetivo() {
                                     <Form.Label>Colaborativo</Form.Label>
                                 </Col>
                                 <Col>
-                                    <Form.Range min="0" max="5" />
+                                    <Form.Range min="0" max="5" value={colInd}
+                                        onChange={(e) => setColInd(e.target.value)} />
                                 </Col>
                                 <Col>
                                     <Form.Label>Independente</Form.Label>
@@ -92,7 +106,8 @@ export default function VagaObjetivo() {
                                     <Form.Label>Reservado</Form.Label>
                                 </Col>
                                 <Col>
-                                    <Form.Range min="0" max="5" />
+                                    <Form.Range min="0" max="5" value={resSoc}
+                                        onChange={(e) => setResSoc(e.target.value)} />
                                 </Col>
                                 <Col>
                                     <Form.Label>Sociável</Form.Label>
@@ -103,7 +118,8 @@ export default function VagaObjetivo() {
                                     <Form.Label>Intenso</Form.Label>
                                 </Col>
                                 <Col>
-                                    <Form.Range min="0" max="5" />
+                                    <Form.Range min="0" max="5" value={intPac}
+                                        onChange={(e) => setIntPac(e.target.value)} />
                                 </Col>
                                 <Col>
                                     <Form.Label>Paciente</Form.Label>
@@ -114,7 +130,8 @@ export default function VagaObjetivo() {
                                     <Form.Label>Impulsivo</Form.Label>
                                 </Col>
                                 <Col>
-                                    <Form.Range min="0" max="5" />
+                                    <Form.Range min="0" max="5" value={impVig}
+                                        onChange={(e) => setImpVig(e.target.value)} />
                                 </Col>
                                 <Col>
                                     <Form.Label>Vigilante</Form.Label>

@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cadastrar, atualizar, listarUm } from "../../controller/candidatoController";
+import { cadastrar, atualizar, listarUmCandidato } from "../../controller/candidatoController";
 import Sidebar from "../components/sidebar";
 
 export default function Cadastro() {
@@ -24,7 +24,7 @@ export default function Cadastro() {
 
     useEffect(() => {
         if (id) {
-            listarUm(id).then((res) => {
+            listarUmCandidato(id).then((res) => {
                 setNome(res.get('nome'));
                 setEmail(res.get('email'));
                 setTelefone(res.get('telefone'));
