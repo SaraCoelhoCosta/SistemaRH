@@ -2,11 +2,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+<<<<<<< HEAD
     width: 100vw;
     height: 100vh;
     position: fixed;
     left: 150px;
     background-color: #D4E8FF;
+=======
+    /*width: 1350px;*/
+    height: 100%;
+    margin-left: 20%;
+    position: absolute;
+>>>>>>> 75e51e3d1c4fbd07d9272d7d747a6a7f241c675c
 }
 
 .menu {
@@ -27,7 +34,11 @@
 
 .form-dash {
     width: 35vw;
+<<<<<<< HEAD
     height: 40vh;
+=======
+    height: 300px;
+>>>>>>> 75e51e3d1c4fbd07d9272d7d747a6a7f241c675c
     text-align: center;
 }
 
@@ -49,6 +60,7 @@
     place-items: center;
 }
 
+/*
 .button-esq {
     color: black;
     font-size: 15px;
@@ -68,6 +80,38 @@
     padding: 25px 50px;
     margin-left: 12px;
 }
+*/
+
+.button-vg {
+    height: 120px;
+    width: 250px;
+    border-radius: 5px;
+    border: 2px solid rgb(63, 63, 236);
+    background: none;
+    margin-top: 30px;
+    margin-left: 140px;
+    color: rgb(63, 63, 236);
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-vg:hover {
+    background: rgb(63, 63, 236);
+    color: #fff;
+}
+
+/*
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+*/
 
 .button-lista {
     color: rgb(0, 28, 128);
