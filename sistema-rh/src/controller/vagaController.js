@@ -5,28 +5,21 @@ const table = 'vagas';
 const Vagas = collection(db, table);
 
 // Criar
-const cadastrarVaga = async (titulo, descricao, dados) => {
-    if (titulo !== "" && descricao !== "") {
-        try {
-            await addDoc(Vagas, dados);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    }
-    else {
+const cadastrarVaga = async (dados) => {
+    try {
+        return await (await addDoc(Vagas, dados)).id;
+    } catch (error) {
         return false;
     }
 };
 
 // Atualiza
-const atualizarVaga = async (id, titulo, descricao) => {
-    if (titulo !== "" && descricao !== "") {
+const atualizarVaga = async (id, candidatos) => {
+    if (id != null) {
         try {
             const vaga = doc(db, table, id);
             await updateDoc(vaga, {
-                'titulo': titulo,
-                'descricao': descricao,
+                'candidatos': candidatos,
             });
             return true;
         } catch (error) {

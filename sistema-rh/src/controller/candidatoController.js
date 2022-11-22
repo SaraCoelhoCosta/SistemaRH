@@ -1,14 +1,14 @@
-import { collection, addDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from './config';
 
 const table = 'candidatos';
-const Candidato = collection(db, table);
+const Candidatos = collection(db, table);
 
 // Criar
 const cadastrarCandidato = async (nome, email, telefone) => {
     if (nome !== "" && email !== "" && telefone !== "") {
         try {
-            await addDoc(Candidato, {
+            await addDoc(Candidatos, {
                 'nome': nome,
                 'email': email,
                 'telefone': telefone,
@@ -54,8 +54,15 @@ const listarUmCandidato = async (id) => {
     }
 };
 
+// Listar todos
+const listarCandidatos = async () => {
+    const todosCandidatos = await (await getDocs(Candidatos)).docs;
+    return todosCandidatos;
+};
+
 export {
     cadastrarCandidato,
     atualizarCandidato,
     listarUmCandidato,
+    listarCandidatos,
 }

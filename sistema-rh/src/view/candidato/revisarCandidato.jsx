@@ -20,7 +20,7 @@ export default function RevisarCandidato() {
         if (id) {
             listarUmaVaga(id).then((res) => {
                 setTitulo(res.get('titulo'));
-                setObjetivos(res.get('objetivo'));
+                setObjetivos(res.get('objetivos'));
             });
         }
     }, [id]);

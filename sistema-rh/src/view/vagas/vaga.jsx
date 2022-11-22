@@ -6,9 +6,17 @@ import Button from 'react-bootstrap/Button';
 import Sidebar from "../components/sidebar";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { listarUmaVaga } from "../../controller/vagaController";
+import { listarUmaVaga, cadastrarVaga } from "../../controller/vagaController";
+import { listarCandidatos } from "../../controller/candidatoController";
 
 export default function Vaga() {
+
+    const min = 0;
+    const max = 5;
+    const randomColab = min + (Math.random() * (max - min));
+    const randomImp = min + (Math.random() * (max - min));
+    const randomInt = min + (Math.random() * (max - min));
+    const randomRes = min + (Math.random() * (max - min));
 
     const { id } = useParams();
 
@@ -21,9 +29,13 @@ export default function Vaga() {
     const [resSoc, setResSoc] = useState(0);
     const [impVig, setImpVig] = useState(0);
     const [intPac, setIntPac] = useState(0);
+    const [email, setEmail] = useState("");
+    const [nome, setNome] = useState("");
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
+    const [candidatos, setCandidatos] = useState([]);
     const [passo, setPasso] = useState([true, false, false]);
+    const [listCandidatos] = useState([]);
 
     useEffect(() => {
         if (id) {
@@ -32,6 +44,9 @@ export default function Vaga() {
                 setDescricao(res.get('descricao'));
             });
         }
+        listarCandidatos().then((res) => {
+            setCandidatos(res);
+        });
     }, [id]);
 
     async function Finalizar(ev) {
@@ -42,7 +57,37 @@ export default function Vaga() {
             ev.stopPropagation();
         }
         setValidated(true);
+
+        await cadastrarVaga({
+            'titulo': titulo,
+            'descricao': descricao,
+            'objetivos': {
+                'colaborativo': colInd,
+                'impulsivo': impVig,
+                'intenso': intPac,
+                'reservado': resSoc,
+            },
+            'candidatos': listCandidatos,
+
+        }).then((res) => {
+            alert('Vaga cadastrada!');
+        });
     };
+
+    async function AddCandidato(ev) {
+        ev.preventDefault();
+        const addC = Array.from(listCandidatos);
+        addC.push({
+            'nome': nome,
+            'email': email,
+            'objetivos': {
+                'colaborativo': randomColab,
+                'impulsivo': randomImp,
+                'intenso': randomInt,
+                'reservado': randomRes,
+            },
+        });
+    }
 
     return (
         <div className="fundo">
@@ -76,14 +121,14 @@ export default function Vaga() {
                             <Row>
                                 <Col>
                                     <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                        <Button variant="outline-danger" type="submit" onClick={() => {navigate('/home')}}>
+                                        <Button variant="outline-danger" type="submit" onClick={() => { navigate('/home') }}>
                                             Cancelar
                                         </Button>
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                        <Button variant="primary" type="submit" onClick={() => {setPasso([false, true, false])}}>
+                                        <Button variant="primary" type="submit" onClick={() => { setPasso([false, true, false]) }}>
                                             Próxima etapa
                                         </Button>
                                     </Form.Group>
@@ -154,14 +199,14 @@ export default function Vaga() {
                             <Row>
                                 <Col>
                                     <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                        <Button variant="outline-danger" type="submit" onClick={() => {setPasso([true, false, false])}}>
+                                        <Button variant="outline-danger" type="submit" onClick={() => { setPasso([true, false, false]) }}>
                                             Cancelar
                                         </Button>
                                     </Form.Group>
                                 </Col>
                                 <Col>
                                     <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                        <Button variant="primary" type="submit" onClick={() => {setPasso([false, false, true])}}>
+                                        <Button variant="primary" type="submit" onClick={() => { setPasso([false, false, true]) }}>
                                             Próxima etapa
                                         </Button>
                                     </Form.Group>
@@ -182,38 +227,27 @@ export default function Vaga() {
                         <Button className="button-left" variant="outline-secondary" size="lg">Criar um link</Button>
                         <Button className="button-right" variant="outline-secondary" size="lg">Criar e-mail</Button>
 
-                        <Form.Group className="mb-3 emails" controlId="formGroupEmail">
-                            <Form.Label>Digite os e-mails separados por vírgula</Form.Label>
-                            <Form.Control type="email" placeholder="fulano@gmail.com, ciclano@gmail.com" />
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Selecione um candidato</Form.Label>
+                            <Form.Control as="select">
+                                <option>Selecione...</option>
+                                {candidatos.map(candidato => (
+                                    <option>{candidato.get('email')}</option>
+                                ))}
+                            </Form.Control>
                         </Form.Group>
 
-                        <div className="dados-candidato">
-                            <Row>
-                                <Col>
-                                    <Form.Label>Nome</Form.Label>
-                                    <Form.Control placeholder="Fulano" />
-                                </Col>
-                                <Col>
-                                    <Form.Label>Sobrenome</Form.Label>
-                                    <Form.Control placeholder="Silva" />
-                                </Col>
-                                <Col>
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control type="email" placeholder="fulano@gmail.com" />
-                                </Col>
-                            </Row>
-                        </div>
                         <Row>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="outline-danger" type="submit" onClick={() => {setPasso([false, true, false])}}>
+                                    <Button variant="outline-danger" type="submit" onClick={() => { setPasso([false, true, false]) }}>
                                         Cancelar
                                     </Button>
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="primary" type="submit" onClick={() => {Finalizar()}}>
+                                    <Button variant="primary" type="submit" onClick={() => { Finalizar() }}>
                                         Finalizar
                                     </Button>
                                 </Form.Group>
