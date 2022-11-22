@@ -53,10 +53,21 @@ const verificarLogin = async (res) => {
     }
 };
 
+// Retorna email
+const retornarEmail = async (res) => {
+    const usuario = auth.currentUser;
+
+    if (usuario) {
+        return usuario.email;
+    } else {
+        return null;
+    }
+};
 
 export {
     cadastrar,
     logar,
     sair,
     verificarLogin,
+    retornarEmail,
 }

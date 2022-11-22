@@ -16,14 +16,17 @@ export default function RevisarCandidato() {
 
     const [titulo, setTitulo] = useState("");
     const [objetivos, setObjetivos] = useState({});
+    const [candidatos, setCandidatos] = useState([]);
 
     useEffect(() => {
         if (id) {
             listarUmaVaga(id).then((res) => {
                 setTitulo(res.get('titulo'));
                 setObjetivos(res.get('objetivos'));
+                setCandidatos(res.get('candidatos'));
             });
         }
+        
     }, [id]);
 
     return (
