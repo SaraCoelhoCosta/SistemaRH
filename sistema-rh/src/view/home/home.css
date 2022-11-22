@@ -16,14 +16,8 @@
     position: fixed;
     left: 0;
     top: 0;
-    height: 100vh;
+    height: 100%;
 }
-
-/*
-.title-tela {
-    color: rgb(20, 28, 184);
-}
-*/
 
 .form-dash {
     width: 35vw;
@@ -48,28 +42,6 @@
     place-items: center;
 }
 
-/*
-.button-esq {
-    color: black;
-    font-size: 15px;
-    text-align: center;
-    display: grid;
-    height: 100px;
-    width: 250px;
-    padding: 25px 50px;
-}
-
-.button-dir {
-    color: black;
-    font-size: 15px;
-    text-align: center;
-    height: 100px;
-    width: 250px;
-    padding: 25px 50px;
-    margin-left: 12px;
-}
-*/
-
 .button-vg {
     height: 120px;
     width: 250px;
@@ -80,7 +52,7 @@
     margin-left: 120px;
     color: rgb(63, 63, 236);
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,16 +62,6 @@
     background: rgb(63, 63, 236);
     color: #fff;
 }
-
-/*
-.actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-}
-*/
 
 .button-lista {
     color: rgb(0, 28, 128);
