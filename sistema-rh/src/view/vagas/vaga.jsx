@@ -56,18 +56,20 @@ export default function Vaga() {
                 'intenso': intPac,
                 'reservado': resSoc,
             },
-            'candidatos': {
-                'nome': nome,
-                'email': email,
-                'objetivos': {
-                    'colaborativo': randomColab,
-                    'impulsivo': randomImp,
-                    'intenso': randomInt,
-                    'reservado': randomRes,
+            'candidatos': [
+                {
+                    'nome': nome,
+                    'email': email,
+                    'objetivos': {
+                        'colaborativo': randomColab,
+                        'impulsivo': randomImp,
+                        'intenso': randomInt,
+                        'reservado': randomRes,
+                    },
                 },
-            },
+            ],
         }).then((res) => {
-            
+
             if (res !== null) {
                 alert('Vaga cadastrada!');
             }
@@ -223,7 +225,7 @@ export default function Vaga() {
                                 {candidatos.map(candidato => (
 
                                     <option key={candidato.id}
-                                        onChange={(e) =>  setEmail(e.target.value)}>
+                                        onChange={(e) => setEmail(e.target.value)}>
                                         {candidato.get('email')}
                                     </option>
 
