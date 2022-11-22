@@ -1,4 +1,5 @@
 import './criar-vaga.css';
+import "./adicionar-candidatos.css";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -13,17 +14,14 @@ export default function Vaga() {
 
     const min = 0;
     const max = 5;
-    const randomColab = min + (Math.random() * (max - min));
-    const randomImp = min + (Math.random() * (max - min));
-    const randomInt = min + (Math.random() * (max - min));
-    const randomRes = min + (Math.random() * (max - min));
+    const randomColab = Math.floor((Math.random() * (max - min)));
+    const randomImp = Math.floor((Math.random() * (max - min)));
+    const randomInt = Math.floor((Math.random() * (max - min)));
+    const randomRes = Math.floor((Math.random() * (max - min)));
 
     const { id } = useParams();
 
     const navigate = useNavigate();
-
-    // Validação de campos
-    const [validated, setValidated] = useState(false);
 
     const [colInd, setColInd] = useState(0);
     const [resSoc, setResSoc] = useState(0);
@@ -35,7 +33,6 @@ export default function Vaga() {
     const [descricao, setDescricao] = useState("");
     const [candidatos, setCandidatos] = useState([]);
     const [passo, setPasso] = useState([true, false, false]);
-    const [listCandidatos] = useState([]);
 
     useEffect(() => {
         if (id) {
@@ -49,15 +46,7 @@ export default function Vaga() {
         });
     }, [id]);
 
-    async function Finalizar(ev) {
-        const formulario = ev.currentTarget;
-
-        ev.preventDefault();
-        if (formulario.checkValidity() === false) {
-            ev.stopPropagation();
-        }
-        setValidated(true);
-
+    async function Finalizar() {
         await cadastrarVaga({
             'titulo': titulo,
             'descricao': descricao,
@@ -67,27 +56,26 @@ export default function Vaga() {
                 'intenso': intPac,
                 'reservado': resSoc,
             },
-            'candidatos': listCandidatos,
-
+            'candidatos': {
+                'nome': nome,
+                'email': email,
+                'objetivos': {
+                    'colaborativo': randomColab,
+                    'impulsivo': randomImp,
+                    'intenso': randomInt,
+                    'reservado': randomRes,
+                },
+            },
         }).then((res) => {
-            alert('Vaga cadastrada!');
+            
+            if (res !== null) {
+                alert('Vaga cadastrada!');
+            }
+            else {
+                alert('Vaga NÃO cadastrada!');
+            }
         });
     };
-
-    async function AddCandidato(ev) {
-        ev.preventDefault();
-        const addC = Array.from(listCandidatos);
-        addC.push({
-            'nome': nome,
-            'email': email,
-            'objetivos': {
-                'colaborativo': randomColab,
-                'impulsivo': randomImp,
-                'intenso': randomInt,
-                'reservado': randomRes,
-            },
-        });
-    }
 
     return (
         <div className="fundo">
@@ -95,7 +83,7 @@ export default function Vaga() {
                 <Sidebar />
             </div>
             {passo[0] &&
-                <Form className="form-vaga" noValidate validated={validated}>
+                <Form className="form-vaga">
                     <div className="conteudo-vaga1">
                         <div className="conteudo-formulario-vaga">
                             <h1 classname="titulo-tela">Criar Vaga</h1>
@@ -217,7 +205,7 @@ export default function Vaga() {
                 </Form>
             }
             {passo[2] &&
-                <Form className="form-addCandidato" noValidate validated={validated}>
+                <Form className="form-addCandidato">
                     <div className="conteudo">
                         <h1 classname="titulo-tela">Criar Vaga</h1>
 
@@ -227,27 +215,33 @@ export default function Vaga() {
                         <Button className="button-left" variant="outline-secondary" size="lg">Criar um link</Button>
                         <Button className="button-right" variant="outline-secondary" size="lg">Criar e-mail</Button>
 
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Selecione um candidato</Form.Label>
-                            <Form.Control as="select">
-                                <option>Selecione...</option>
+
+                        <Form.Group className="mb-3" controlId="formBasicTitle">
+                            <Form.Label>Selecione os candidatos</Form.Label>
+                            <Form.Select aria-label="Default select example">
+                                <option>Selecione</option>
                                 {candidatos.map(candidato => (
-                                    <option>{candidato.get('email')}</option>
+
+                                    <option key={candidato.id}
+                                        onChange={(e) =>  setEmail(e.target.value)}>
+                                        {candidato.get('email')}
+                                    </option>
+
                                 ))}
-                            </Form.Control>
+                            </Form.Select>
                         </Form.Group>
 
                         <Row>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="outline-danger" type="submit" onClick={() => { setPasso([false, true, false]) }}>
+                                    <Button variant="outline-danger" type="button" onClick={() => { setPasso([false, true, false]); }}>
                                         Cancelar
                                     </Button>
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="primary" type="submit" onClick={() => { Finalizar() }}>
+                                    <Button variant="primary" type="button" onClick={() => { Finalizar(); }}>
                                         Finalizar
                                     </Button>
                                 </Form.Group>
@@ -256,6 +250,6 @@ export default function Vaga() {
                     </div>
                 </Form>
             }
-        </div>
+        </div >
     );
 }

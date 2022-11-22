@@ -9,7 +9,7 @@ const cadastrarVaga = async (dados) => {
     try {
         return await (await addDoc(Vagas, dados)).id;
     } catch (error) {
-        return false;
+        return null;
     }
 };
 
