@@ -2,9 +2,9 @@
     display: block;
     justify-content: center;
     align-items: center;
-    width: 100vw;
     height: 100vh;
     margin-left: 300px;
+    background-color: #D4E8FF;
 }
 
 .form-vagaCand {

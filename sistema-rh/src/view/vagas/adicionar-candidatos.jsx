@@ -1,7 +1,6 @@
+import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import "./adicionar-candidatos.css";
 import Sidebar from "../components/sidebar";
 
@@ -21,57 +20,19 @@ export default function AdicionarCandidato() {
                 <Button className="button-left" variant="outline-secondary" size="lg">Criar um link</Button>{' '}
                 <Button className="button-right" variant="outline-secondary" size="lg">Criar e-mail</Button>{' '}
 
-                <Form.Group className="mb-3 emails" controlId="formGroupEmail">
-                    <Form.Label>Digite os e-mails separados por vírgula</Form.Label>
-                    <Form.Control type="email" placeholder="fulano@gmail.com, ciclano@gmail.com" />
-                </Form.Group>
+                <h6 className="titulo-select">Selecione os candidatos</h6>
+                <div className="select-candidato">
+                    <Form.Select aria-label="Default select example">
+                        <option>Selecione</option>
+                        <option value="1">João</option>
+                        <option value="2">Maria</option>
+                        <option value="3">Cecília</option>
+                    </Form.Select>
 
-                <div className="dados-candidato">
-                    <Row>
-                        <Col>
-                            <Form.Label>Nome</Form.Label>
-                            <Form.Control placeholder="Fulano" />
-                        </Col>
-                        <Col>
-                            <Form.Label>Sobrenome</Form.Label>
-                            <Form.Control placeholder="Silva" />
-                        </Col>
-                        <Col>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="fulano@gmail.com" />
-                        </Col>
-                    </Row>
-                    <Row className="button-acesso">
-                        <Col>
-                            <Form.Label>Nome</Form.Label>
-                            <Form.Control placeholder="Fulano" />
-                        </Col>
-                        <Col>
-                            <Form.Label>Sobrenome</Form.Label>
-                            <Form.Control placeholder="Silva" />
-                        </Col>
-                        <Col>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="fulano@gmail.com" />
-                        </Col>
-                    </Row>
+                    <Link className="button-add" variant="outline-dark" size="lg">
+                        Adicionar
+                    </Link>
                 </div>
-                <Row>
-                    <Col>
-                        <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                            <Button variant="outline-danger" type="submit">
-                                Cancelar
-                            </Button>
-                        </Form.Group>
-                    </Col>
-                    <Col>
-                        <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                            <Button variant="primary" type="submit">
-                                Finalizar
-                            </Button>
-                        </Form.Group>
-                    </Col>
-                </Row>
             </div>
            
         </Form>

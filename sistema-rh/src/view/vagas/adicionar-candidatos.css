@@ -4,6 +4,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: #D4E8FF;
 }
 
 .menu {
@@ -61,8 +62,37 @@
     margin-left: 40px;
 }
 
-.emails {
+.titulo-select {
     margin-top: 40px;
+    color: black;
+    font-weight: ligther;
+}
+
+.select-candidato {
+    display: flex;
+    justify-content: center;
+    align-items: initial;
+    margin-bottom: 300px;
+}
+
+.button-add {
+    height: 45px;
+    width: 95px;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 85, 212);
+    background: none;
+    color: rgb(0, 85, 212);
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.button-add:hover {
+    background: rgb(0, 85, 212);
+    color: #fff;
 }
 
 .dados-candidato {
