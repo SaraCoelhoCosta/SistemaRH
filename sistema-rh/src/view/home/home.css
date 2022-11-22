@@ -2,18 +2,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-<<<<<<< HEAD
     width: 100vw;
     height: 100vh;
     position: fixed;
     left: 150px;
     background-color: #D4E8FF;
-=======
-    /*width: 1350px;*/
-    height: 100%;
-    margin-left: 20%;
-    position: absolute;
->>>>>>> 75e51e3d1c4fbd07d9272d7d747a6a7f241c675c
 }
 
 .menu {
@@ -34,11 +27,7 @@
 
 .form-dash {
     width: 35vw;
-<<<<<<< HEAD
     height: 40vh;
-=======
-    height: 300px;
->>>>>>> 75e51e3d1c4fbd07d9272d7d747a6a7f241c675c
     text-align: center;
 }
 

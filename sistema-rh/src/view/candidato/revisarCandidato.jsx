@@ -53,7 +53,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Colaborativo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['colaborativo/independente']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['colaborativo']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Independente</Form.Label>
@@ -64,7 +64,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Reservado</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['reservado/sociavel']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['reservado']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Sociável</Form.Label>
@@ -75,7 +75,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Intenso</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['intenso/paciente']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['intenso']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Paciente</Form.Label>
@@ -86,7 +86,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Impulsivo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['impulsivo/vigilante']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['impulsivo']}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Vigilante</Form.Label>
