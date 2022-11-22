@@ -4,8 +4,8 @@ import { db } from './config';
 const table = 'candidatos';
 const Candidato = collection(db, table);
 
-// Cria usuário
-const cadastrar = async (nome, email, telefone) => {
+// Criar
+const cadastrarCandidato = async (nome, email, telefone) => {
     if (nome !== "" && email !== "" && telefone !== "") {
         try {
             await addDoc(Candidato, {
@@ -24,7 +24,7 @@ const cadastrar = async (nome, email, telefone) => {
 };
 
 // Atualiza
-const atualizar = async (id, nome, email, telefone) => {
+const atualizarCandidato = async (id, nome, email, telefone) => {
     if (nome !== "" && email !== "" && telefone !== "") {
         try {
             const candidato = doc(db, table, id);
@@ -55,7 +55,7 @@ const listarUmCandidato = async (id) => {
 };
 
 export {
-    cadastrar,
-    atualizar,
+    cadastrarCandidato,
+    atualizarCandidato,
     listarUmCandidato,
 }

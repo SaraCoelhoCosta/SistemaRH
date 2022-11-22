@@ -10,15 +10,6 @@ import { listarUmaVaga } from "../../controller/vagaController";
 
 export default function Vaga() {
 
-    /*const initVaga = {
-        titulo: '',
-        descricao: '',
-        colInd: 0,
-        resSoc: 0,
-        intPac: 0,
-        impVig: 0,
-    }*/
-
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -43,45 +34,14 @@ export default function Vaga() {
         }
     }, [id]);
 
-    async function CriarVaga(ev) {
+    async function Finalizar(ev) {
         const formulario = ev.currentTarget;
 
         ev.preventDefault();
         if (formulario.checkValidity() === false) {
             ev.stopPropagation();
         }
-
         setValidated(true);
-
-
-        setPasso([false, true, false]);
-        /*await cadastrar(titulo, descricao).then((res) => {
-            if (res) {
-                alert('Vaga cadastrada!');
-            }
-            else {
-                alert('Vaga NÃO cadastrada!');
-            }
-
-        });*/
-    };
-
-    async function ObjetivoVaga(ev) {
-        ev.preventDefault();
-        setPasso([false, false, true]);
-
-        /*  'objetivo': {
-          'colaborativo/independente': colInd,
-          'reservado/sociavel': resSoc,
-          'intenso/paciente': intPac,
-          'impulsivo/vigilante': impVig,
-      },*/
-    };
-
-
-    async function AddCandidato(ev) {
-        ev.preventDefault();
-        setPasso([false, false, false]);
     };
 
     return (
@@ -219,8 +179,8 @@ export default function Vaga() {
                         <h2 className="titulo-secao">Adicionar Candidatos</h2>
 
                         <h6 className="titulo-botoes">Enviar formulário para os candidatos para a vaga de Designer</h6>
-                        <Button className="button-left" variant="outline-secondary" size="lg">Criar um link</Button>{' '}
-                        <Button className="button-right" variant="outline-secondary" size="lg">Criar e-mail</Button>{' '}
+                        <Button className="button-left" variant="outline-secondary" size="lg">Criar um link</Button>
+                        <Button className="button-right" variant="outline-secondary" size="lg">Criar e-mail</Button>
 
                         <Form.Group className="mb-3 emails" controlId="formGroupEmail">
                             <Form.Label>Digite os e-mails separados por vírgula</Form.Label>
@@ -229,20 +189,6 @@ export default function Vaga() {
 
                         <div className="dados-candidato">
                             <Row>
-                                <Col>
-                                    <Form.Label>Nome</Form.Label>
-                                    <Form.Control placeholder="Fulano" />
-                                </Col>
-                                <Col>
-                                    <Form.Label>Sobrenome</Form.Label>
-                                    <Form.Control placeholder="Silva" />
-                                </Col>
-                                <Col>
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control type="email" placeholder="fulano@gmail.com" />
-                                </Col>
-                            </Row>
-                            <Row className="button-acesso">
                                 <Col>
                                     <Form.Label>Nome</Form.Label>
                                     <Form.Control placeholder="Fulano" />
@@ -267,7 +213,7 @@ export default function Vaga() {
                             </Col>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="primary" type="submit" onClick={AddCandidato()}>
+                                    <Button variant="primary" type="submit" onClick={() => {Finalizar()}}>
                                         Finalizar
                                     </Button>
                                 </Form.Group>

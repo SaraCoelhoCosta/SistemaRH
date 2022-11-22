@@ -1,20 +1,22 @@
 .fundo-dashboard {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100vw;
-    height: 700px;
-    left: 230px;
-    position: absolute;
+    height: 100vh;
+    position: fixed;
+    left: 150px;
+    background-color: #D4E8FF;
 }
 
 .menu {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     position: fixed;
     left: 0;
     top: 0;
+    height: 100vh;
 }
 
 /*
@@ -24,15 +26,14 @@
 */
 
 .form-dash {
-    width: 40vw;
-    height: 35vh;
+    width: 35vw;
+    height: 40vh;
     text-align: center;
 }
 
 
 .titulo-page {
-    margin: 40px;
-    margin-bottom: 30px;
+    padding: 20px;
     color: rgb(63, 63, 236);
     font-weight: bold;    
 }

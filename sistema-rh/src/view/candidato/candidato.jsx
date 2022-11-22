@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { cadastrar, atualizar, listarUmCandidato } from "../../controller/candidatoController";
+import { cadastrarCandidato, atualizarCandidato, listarUmCandidato } from "../../controller/candidatoController";
 import Sidebar from "../components/sidebar";
 
 export default function Cadastro() {
@@ -43,7 +43,7 @@ export default function Cadastro() {
         setValidated(true);
 
         if (id) {
-            await atualizar(id, nome, email, telefone).then((res) => {
+            await atualizarCandidato(id, nome, email, telefone).then((res) => {
                 if (res) {
                     alert('Candidato atualizado!');
                     navigate('/home');
@@ -53,7 +53,7 @@ export default function Cadastro() {
                 }
             });
         } else {
-            await cadastrar(nome, email, telefone).then((res) => {
+            await cadastrarCandidato(nome, email, telefone).then((res) => {
                 if (res) {
                     alert('Candidato cadastrado!');
                     navigate('/home');

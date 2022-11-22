@@ -43,7 +43,7 @@ const sair = async () => {
 };
 
 // Verificar se está logado
-const verificarLogin = async (req, res) => {
+const verificarLogin = async (res) => {
     const usuario = auth.currentUser;
 
     if (usuario) {
