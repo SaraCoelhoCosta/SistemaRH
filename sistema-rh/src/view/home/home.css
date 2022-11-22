@@ -2,9 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 700px;
-    left: 230px;
+    /*width: 1350px;*/
+    height: 100%;
+    margin-left: 20%;
     position: absolute;
 }
 
@@ -24,8 +24,8 @@
 */
 
 .form-dash {
-    width: 40vw;
-    height: 35vh;
+    width: 35vw;
+    height: 300px;
     text-align: center;
 }
 
