@@ -104,7 +104,7 @@ export default function RevisarCandidato() {
                 <Col>                   
                     <div className="conteudo-home">
                         <h3 className="titulo-rCand">Candidatos</h3>                                
-                        <Table striped bordered hover className="table-candidatos" responsive>
+                        <Table striped bordered hover className="table-candidatos" responsive variant="dark">
                             <thead>
                                 <tr>
                                     <th> </th>
