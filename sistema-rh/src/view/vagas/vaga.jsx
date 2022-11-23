@@ -224,10 +224,11 @@ export default function Vaga() {
                                 <option>Selecione</option>
                                 {candidatos.map(candidato =>
 
-                                    <option key={candidato.id} value={candidato.get('email')}
-                                        onChange={(e) => setEmail(e.target.value)}>
-                                        {candidato.get('email')}
-                                    </option>
+                                    <><Form.Control type="text" required value={email}
+                                        onChange={(e) => setEmail(e.target.value)} placeholder="Insira o título da vaga" /><option key={candidato.id} value={candidato.get('email')}
+                                            onChange={(e) => setEmail(e.target.value)}>
+                                            {candidato.get('email')}
+                                        </option></>
 
                                 )}
                             </Form.Select>
