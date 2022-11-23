@@ -6,7 +6,7 @@ Este projeto foi desenvolvido para a disciplina de Programação Web, como requi
 - HTML;
 - CSS;
 - JavaScript;
-- NodeJS;
+- ReactJS;
 - Bootstrap 5.2;
 - Material Icons - MUI.
 
