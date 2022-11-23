@@ -64,10 +64,22 @@ const retornarEmail = async () => {
     }
 };
 
+// Retorna nome
+const retornarNome = async () => {
+    const usuario = auth.currentUser;
+
+    if (usuario) {
+        return usuario.displayName;
+    } else {
+        return null;
+    }
+};
+
 export {
     cadastrar,
     logar,
     sair,
     verificarLogin,
     retornarEmail,
+    retornarNome,
 }

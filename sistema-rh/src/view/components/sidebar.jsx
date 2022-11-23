@@ -7,11 +7,26 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-import { sair } from "../../controller/userController";
+import { useState, useEffect } from "react";
+import { sair, retornarEmail, retornarNome } from "../../controller/userController";
 
 export default function Sidebar() {
 
     const navigate = useNavigate();
+    const [email, setEmail] = useState([]);
+    const [nome, setNome] = useState([]);
+
+    useEffect(() => {
+        retornarEmail().then((res) => {
+            setEmail(res);
+        });
+    });
+
+    useEffect(() => {
+        retornarNome().then((res) => {
+            setNome(res);
+        });
+    });
 
     async function enviar(ev) {
         ev.preventDefault();
@@ -57,11 +72,11 @@ export default function Sidebar() {
                 <p class="d-flex align-items-center  text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="http://localhost:3000/foto-perfil.jpg" alt="Foto do perfil" width="32" height="32" class="rounded-circle me-2"/>
                     
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">                            
+                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">                          
                         <Col sm="10">
-                        <Form.Control plaintext readOnly defaultValue="email@example.com" />
+                            <Form.Control plaintext readOnly defaultValue={email} />
                         </Col>
-                    </Form.Group>   
+                    </Form.Group> 
                 </p>
                 
             </div>
@@ -77,7 +92,6 @@ export default function Sidebar() {
                     </div>
                 </Form>
             </div>
-            
         </div>
     );
 }
