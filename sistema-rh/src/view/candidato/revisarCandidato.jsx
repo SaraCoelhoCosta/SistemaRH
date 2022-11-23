@@ -26,7 +26,6 @@ export default function RevisarCandidato() {
                 setCandidatos(res.get('candidatos'));
             });
         }
-        
     }, [id]);
 
     return (
@@ -49,15 +48,15 @@ export default function RevisarCandidato() {
                     <Form className="form-vagaCand" >
                         <div className="conteudo-candVaga">
                             <div className="conteudo-formulario-vaga">
-                                
+
                                 <Form.Group className="mb-3" controlId="formBasicTitle">
-                                   
+
                                     <Row>
                                         <Col>
                                             <Form.Label>Colaborativo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['colaborativo']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['colaborativo']} />
                                         </Col>
                                         <Col>
                                             <Form.Label>Independente</Form.Label>
@@ -68,7 +67,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Reservado</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['reservado']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['reservado']} />
                                         </Col>
                                         <Col>
                                             <Form.Label>Sociável</Form.Label>
@@ -79,7 +78,7 @@ export default function RevisarCandidato() {
                                             <Form.Label>Intenso</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['intenso']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['intenso']} />
                                         </Col>
                                         <Col>
                                             <Form.Label>Paciente</Form.Label>
@@ -90,24 +89,24 @@ export default function RevisarCandidato() {
                                             <Form.Label>Impulsivo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value={objetivos['impulsivo']}/>
+                                            <Form.Range min="0" max="5" value={objetivos['impulsivo']} />
                                         </Col>
                                         <Col>
                                             <Form.Label>Vigilante</Form.Label>
                                         </Col>
                                     </Row>
                                 </Form.Group>
-                    
+
                             </div>
                         </div>
                     </Form>
                 </Col>
             </Row>
-            
-            <Row>              
-                <Col>                   
+
+            <Row>
+                <Col>
                     <div className="conteudo-home">
-                        <h3 className="titulo-rCand">Candidatos</h3>                                
+                        <h3 className="titulo-rCand">Candidatos</h3>
                         <Table striped bordered hover className="table-candidatos" responsive variant="dark">
                             <thead>
                                 <tr>
@@ -122,37 +121,40 @@ export default function RevisarCandidato() {
                                 </tr>
                             </thead>
                             <tbody>
-                                     <tr>
-                                     <td><Form.Check aria-label="option 1" /></td>
-                                    <td>João da Silva</td>
-                                    <td>joao@gmail.com</td>
-                                    <td className="pendente">Pendente</td>
-                                    <td>5</td>
-                                    <td>5</td>
-                                    <td>
-                                        <Link
-                                            className="button-1"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="outline-primary"
-                                            value="1"
-                                        >
-                                            Não
-                                        </Link>
-                                    </td>
-                                
-                                     <td>
-                                        <Link
-                                            className="button-2"
-                                            id="toggle-check"
-                                            type="checkbox"
-                                            variant="primary"
-                                            value="1"
-                                        >
-                                            Visualizar
-                                        </Link>
-                                    </td>
-                                </tr>                     
+                                {candidatos.map(c => 
+                                    <tr>
+                                        <td><Form.Check aria-label="option" /></td>
+                                        <td>{c['nome']}</td>
+                                        <td>{c['email']}</td>
+                                        <td className="pendente">Pendente</td>
+                                        <td>5</td>
+                                        <td>5</td>
+                                        <td>
+                                            <Link
+                                                className="button-1"
+                                                id="toggle-check"
+                                                type="checkbox"
+                                                variant="outline-primary"
+                                                value="1"
+                                            >
+                                                Não
+                                            </Link>
+                                        </td>
+
+                                        <td>
+                                            <Link
+                                                className="button-2"
+                                                id="toggle-check"
+                                                type="checkbox"
+                                                variant="primary"
+                                                value="1"
+                                                to={`/candidatos/${c.id}`}
+                                            >
+                                                Visualizar
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </Table>
                     </div>
