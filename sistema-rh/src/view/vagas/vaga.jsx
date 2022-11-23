@@ -222,10 +222,10 @@ export default function Vaga() {
                             <Form.Label>Selecione os candidatos</Form.Label>
                             <Form.Select aria-label="Default select example">
                                 <option>Selecione</option>
-                                {candidatos.map(candidato => 
+                                {candidatos.map(candidato =>
 
                                     <option key={candidato.id} value={candidato.get('email')}
-                                        onChange={(e) => e.target.value}>
+                                        onChange={(e) => setEmail(e.target.value)}>
                                         {candidato.get('email')}
                                     </option>
 
