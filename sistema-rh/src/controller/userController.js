@@ -54,7 +54,7 @@ const verificarLogin = async (res) => {
 };
 
 // Retorna email
-const retornarEmail = async (res) => {
+const retornarEmail = async () => {
     const usuario = auth.currentUser;
 
     if (usuario) {
