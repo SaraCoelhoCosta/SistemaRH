@@ -71,7 +71,6 @@ export default function Sidebar() {
                 <h5 classname="titulo-secao">Perfil</h5>
                 <p class="d-flex align-items-center  text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="http://localhost:3000/foto-perfil.jpg" alt="Foto do perfil" width="32" height="32" class="rounded-circle me-2"/>
-                    
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">                          
                         <Col sm="10">
                             <Form.Control plaintext readOnly defaultValue={email} />
