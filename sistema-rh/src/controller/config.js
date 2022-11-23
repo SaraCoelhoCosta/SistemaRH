@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 
 // Configurações do BD
 const firebaseConfig = {
-  apiKey: "AIzaSyDp_SxjorMM2u7xA8vkhRhwbRRMH9i-_eE",
-  authDomain: "sys-rh.firebaseapp.com",
-  projectId: "sys-rh",
-  storageBucket: "sys-rh.appspot.com",
-  messagingSenderId: "822058865366",
-  appId: "1:822058865366:web:afda4397c04614f7cd2f77",
+  apiKey: "AIzaSyDbwxG3m18gEZtKZQbldMwxs5ElkhvgEZs",
+  authDomain: "sistem-rh.firebaseapp.com",
+  projectId: "sistem-rh",
+  storageBucket: "sistem-rh.appspot.com",
+  messagingSenderId: "240696841537",
+  appId: "1:240696841537:web:0fc508bd3a067796a7bdc0",
 };
 
 // Inicializando BD
