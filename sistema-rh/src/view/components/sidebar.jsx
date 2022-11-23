@@ -38,7 +38,7 @@ export default function Sidebar() {
     };
 
     return (
-
+        
         <div className="sidebar">
             <div className="logo-rh">
                 <img src="http://localhost:3000/recrutamento1.png" alt="Logo" width="200px" height="100px" />
@@ -49,13 +49,13 @@ export default function Sidebar() {
                 <ul className="sidebarList">
                     {SidebarData.map((valor, key) => {
                         return (
-                            <li
-                                key={key}
-                                className="row"
-                                id={window.location.pathname == valor.link ? "active" : ""}
-                                onClick={() => {
-                                    window.location.pathname = valor.link;
-                                }}
+                            <li 
+                            key={key}
+                            className="row"
+                            id={window.location.pathname == valor.link ? "active" : ""}
+                            onClick={() => {
+                                window.location.pathname = valor.link;
+                            }}
                             >
                                 <div id="icon">{valor.icon}</div>
                                 <div id="title">{valor.title}</div>
@@ -64,22 +64,22 @@ export default function Sidebar() {
                     })}
                 </ul>
             </div>
-
-            <hr className="linha" />
-
+            
+            <hr className="linha"/>
+            
             <div className="perfil">
                 <h5 classname="titulo-secao">Perfil</h5>
                 <p class="d-flex align-items-center  text-decoration-none " data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="http://localhost:3000/foto-perfil.jpg" alt="Foto do perfil" width="32" height="32" class="rounded-circle me-2" />
-
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                    <img src="http://localhost:3000/foto-perfil.jpg" alt="Foto do perfil" width="32" height="32" class="rounded-circle me-2"/>
+                    
+                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">                          
                         <Col sm="10">
-                            <Form.Control plaintext readOnly defaultValue={nome} />
+                        <Form.Control plaintext readOnly defaultValue={nome} />
                             <Form.Control plaintext readOnly defaultValue={email} />
                         </Col>
-                    </Form.Group>
+                    </Form.Group> 
                 </p>
-
+                
             </div>
 
             <div className="botao-sair">

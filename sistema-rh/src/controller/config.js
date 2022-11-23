@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "sistem-rh",
   storageBucket: "sistem-rh.appspot.com",
   messagingSenderId: "240696841537",
-  appId: "1:240696841537:web:0fc508bd3a067796a7bdc0",
+  appId: "1:240696841537:web:0fc508bd3a067796a7bdc0"
 };
 
 // Inicializando BD
