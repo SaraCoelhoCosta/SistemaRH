@@ -1,6 +1,6 @@
 import { db, auth } from './config';
 import { collection, addDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateCurrentUser } from 'firebase/auth';
 
 const table = 'usuarios';
 const User = collection(db, table);
@@ -10,15 +10,16 @@ const cadastrar = async (nome, email, senha) => {
     try {
         const doc = await createUserWithEmailAndPassword(auth, email, senha);
         const usuario = doc.user;
-        
+        await updateCurrentUser(auth, nome);
         await addDoc(User, {
             uid: usuario.uid,
             nome: nome,
             email: email,
         });
+
         return true;
     } catch (error) {
-        return false;
+        return error;
     }
 };
 

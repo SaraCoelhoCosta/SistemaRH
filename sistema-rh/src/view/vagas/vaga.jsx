@@ -27,6 +27,7 @@ export default function Vaga() {
     const [resSoc, setResSoc] = useState(0);
     const [impVig, setImpVig] = useState(0);
     const [intPac, setIntPac] = useState(0);
+    const [idCandidato, setIdCandidato] = useState("");
     const [email, setEmail] = useState("");
     const [nome, setNome] = useState("");
     const [titulo, setTitulo] = useState("");
@@ -58,6 +59,7 @@ export default function Vaga() {
             },
             'candidatos': [
                 {
+                    'id': idCandidato,
                     'nome': nome,
                     'email': email,
                     'objetivos': {
@@ -224,11 +226,10 @@ export default function Vaga() {
                                 <option>Selecione</option>
                                 {candidatos.map(candidato =>
 
-                                    <><Form.Control type="text" required value={email}
-                                        onChange={(e) => setEmail(e.target.value)} placeholder="Insira o título da vaga" /><option key={candidato.id} value={candidato.get('email')}
-                                            onChange={(e) => setEmail(e.target.value)}>
-                                            {candidato.get('email')}
-                                        </option></>
+                                    <option key={candidato.id} value={candidato.get('email')}
+                                        onChange={(e) => setEmail(e.target.value)}>
+                                        {candidato.get('email')}
+                                    </option>
 
                                 )}
                             </Form.Select>

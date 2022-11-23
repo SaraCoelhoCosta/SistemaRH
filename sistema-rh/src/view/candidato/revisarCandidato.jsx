@@ -148,7 +148,7 @@ export default function RevisarCandidato() {
                                                 type="checkbox"
                                                 variant="primary"
                                                 value="1"
-                                                to={`/candidatos/${c.id}`}
+                                                to={`/visualizarCandidato`}
                                             >
                                                 Visualizar
                                             </Link>

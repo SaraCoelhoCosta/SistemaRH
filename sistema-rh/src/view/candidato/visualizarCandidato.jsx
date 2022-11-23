@@ -23,13 +23,13 @@ export default function VisualizarCandidato() {
                     <h3 className="titulo1-vCand">Designer</h3>
                     <div className="dados-vcandidato">
                         <p>
-                            Nome: João da Silva
+                            Nome: Lara
                         </p>
                         <p>
-                            E-mail: joao@gmail.com
+                            E-mail: lara@gmail.com
                         </p>
                         <p>
-                            Telefone: (99) 99999-9999
+                            Telefone: 73999999999
                         </p>
                     </div>
                 </Col>
@@ -50,7 +50,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Colaborativo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value="4"/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Independente</Form.Label>
@@ -61,7 +61,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Reservado</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value="3"/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Sociável</Form.Label>
@@ -72,7 +72,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Intenso</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value="3"/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Paciente</Form.Label>
@@ -83,7 +83,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Impulsivo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" />
+                                            <Form.Range min="0" max="5" value="1"/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Vigilante</Form.Label>
@@ -98,8 +98,8 @@ export default function VisualizarCandidato() {
                 </Col>
             </Row>
             <div className="buttons-visu">
-                <Button className="botao-esquerdo" variant="outline-danger">Cancelar</Button>{' '}
-                <Button className="botao-direito" variant="primary">Editar</Button>{' '}
+                <Button className="botao-esquerdo" variant="outline-danger" to={`/home`}>Cancelar</Button>{' '}
+                <Button className="botao-direito" variant="primary" to={`/candidato/s4zXWThzyoMHLztuxZ8I`}>Editar</Button>{' '}
             </div>
         </div>
     );
