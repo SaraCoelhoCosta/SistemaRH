@@ -27,7 +27,9 @@ export default function Vaga() {
     const [resSoc, setResSoc] = useState(0);
     const [impVig, setImpVig] = useState(0);
     const [intPac, setIntPac] = useState(0);
-    const [select, setSelect] = useState("");
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [idCandidato, setIdCandidato] = useState("");
     const [titulo, setTitulo] = useState("");
     const [descricao, setDescricao] = useState("");
     const [candidatos, setCandidatos] = useState([]);
@@ -57,9 +59,9 @@ export default function Vaga() {
             },
             'candidatos': [
                 {
-                    'id': select,
-                    'nome': select,
-                    'email': select,
+                    'id': idCandidato,
+                    'nome': nome,
+                    'email': email,
                     'objetivos': {
                         'colaborativo': randomColab,
                         'impulsivo': randomImp,
@@ -221,15 +223,16 @@ export default function Vaga() {
                         <Form.Group className="mb-3" controlId="formBasicTitle">
                             <Form.Label>Selecione os candidatos</Form.Label>
                             <Form.Select aria-label="Default select example"
-                            className="form-control"
-                            value={select}
-                            onChange={e => setSelect(e.target.value)}
+                                className="form-control"
+                                value={nome}
+                                onChange={(e) => {setNome(e.target.value)}}
                             >
                                 <option>Selecione</option>
-                                {candidatos.map(candidato => 
-                                    <option key={candidato.id} defaultValue={candidato.get('email')} value={candidato.get('nome')}>
+                                {candidatos.map(candidato =>
+                                    <option value={candidato.get('nome')}
+                                    >
                                         {candidato.get('email')}
-                                    </option>    
+                                    </option>
                                 )}
                             </Form.Select>
                         </Form.Group>
