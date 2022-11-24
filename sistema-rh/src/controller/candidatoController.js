@@ -5,13 +5,14 @@ const table = 'candidatos';
 const Candidatos = collection(db, table);
 
 // Criar
-const cadastrarCandidato = async (nome, email, telefone) => {
-    if (nome !== "" && email !== "" && telefone !== "") {
+const cadastrarCandidato = async (nome, email, telefone, objetivos) => {
+    if (nome !== "" && email !== "" && telefone !== "" && objetivos != null) {
         try {
             await addDoc(Candidatos, {
                 'nome': nome,
                 'email': email,
                 'telefone': telefone,
+                'objetivos': objetivos,
             });
             return true;
         } catch (error) {
@@ -25,7 +26,7 @@ const cadastrarCandidato = async (nome, email, telefone) => {
 
 // Atualiza
 const atualizarCandidato = async (id, nome, email, telefone) => {
-    if (nome !== "" && email !== "" && telefone !== "") {
+    if (nome !== "" && email !== "" && telefone !== "" && (id !== '' || id !== null)) {
         try {
             const candidato = doc(db, table, id);
             await updateDoc(candidato, {

@@ -4,7 +4,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-import ToggleButton from 'react-bootstrap/ToggleButton';
 import Sidebar from "../components/sidebar";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -121,7 +120,7 @@ export default function RevisarCandidato() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {candidatos.map(c => 
+                                {candidatos.map(c =>
                                     <tr>
                                         <td><Form.Check aria-label="option" /></td>
                                         <td>{c['nome']}</td>
@@ -148,7 +147,7 @@ export default function RevisarCandidato() {
                                                 type="checkbox"
                                                 variant="primary"
                                                 value="1"
-                                                to={`/visualizarCandidato`}
+                                                to={`/visualizarCandidato/` + c['id']}
                                             >
                                                 Visualizar
                                             </Link>

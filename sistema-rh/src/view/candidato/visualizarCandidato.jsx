@@ -5,8 +5,38 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React from "react";
 import Sidebar from "../components/sidebar";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { listarUmCandidato } from '../../controller/candidatoController';
 
 export default function VisualizarCandidato() {
+
+    const { id } = useParams();
+    const navigate = useNavigate();
+    // Cadastro
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [objetivos, setObjetivos] = useState({});
+
+    useEffect(() => {
+        if (id) {
+            listarUmCandidato(id).then((res) => {
+                setNome(res.get('nome'));
+                setEmail(res.get('email'));
+                setTelefone(res.get('telefone'));
+                setObjetivos(res.get('objetivos'));
+            });
+        }
+    }, [id]);
+
+    async function editar() {
+        navigate(`/candidato/${id}`);
+    };
+
+    function cancelar() {
+        navigate('/home');
+    };
 
     return (
         <div className="fundo-visuCandidato">
@@ -23,13 +53,13 @@ export default function VisualizarCandidato() {
                     <h3 className="titulo1-vCand">Designer</h3>
                     <div className="dados-vcandidato">
                         <p>
-                            Nome: Lara
+                            Nome: {(nome !== '' && nome !== null) ? nome : "Lara Teste"}
                         </p>
                         <p>
-                            E-mail: lara@gmail.com
+                            E-mail: {(email !== '' && email !== null) ? email : "laraTeste@gmail.com"}
                         </p>
                         <p>
-                            Telefone: 73999999999
+                            Telefone: {(telefone !== '' && telefone !== null) ? telefone : "73999999999"}
                         </p>
                     </div>
                 </Col>
@@ -50,7 +80,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Colaborativo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value="4"/>
+                                            <Form.Range min="0" max="5" value={(objetivos['colaborativo'] != null) ? objetivos['colaborativo'] : 0}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Independente</Form.Label>
@@ -61,7 +91,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Reservado</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value="3"/>
+                                            <Form.Range min="0" max="5" value={(objetivos['reservado'] != null) ? objetivos['reservado'] : 0}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Sociável</Form.Label>
@@ -72,7 +102,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Intenso</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value="3"/>
+                                            <Form.Range min="0" max="5" value={(objetivos['intenso'] != null) ? objetivos['intenso'] : 0}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Paciente</Form.Label>
@@ -83,7 +113,7 @@ export default function VisualizarCandidato() {
                                             <Form.Label>Impulsivo</Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Range min="0" max="5" value="1"/>
+                                            <Form.Range min="0" max="5" value={(objetivos['impulsivo'] != null) ? objetivos['impulsivo'] : 0}/>
                                         </Col>
                                         <Col>
                                             <Form.Label>Vigilante</Form.Label>
@@ -98,8 +128,8 @@ export default function VisualizarCandidato() {
                 </Col>
             </Row>
             <div className="buttons-visu">
-                <Button className="botao-esquerdo" variant="outline-danger" to={`/home`}>Cancelar</Button>{' '}
-                <Button className="botao-direito" variant="primary" to={`/candidato/s4zXWThzyoMHLztuxZ8I`}>Editar</Button>{' '}
+                <Button className="botao-esquerdo" variant="outline-danger" onClick={cancelar}>Cancelar</Button>
+                <Button className="botao-direito" variant="primary"  onClick={editar}>Editar</Button>
             </div>
         </div>
     );

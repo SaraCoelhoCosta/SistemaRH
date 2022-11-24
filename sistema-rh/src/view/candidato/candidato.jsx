@@ -10,6 +10,13 @@ import Sidebar from "../components/sidebar";
 
 export default function Cadastro() {
 
+    const min = 0;
+    const max = 5;
+    const randomColab = Math.floor((Math.random() * (max - min)));
+    const randomImp = Math.floor((Math.random() * (max - min)));
+    const randomInt = Math.floor((Math.random() * (max - min)));
+    const randomRes = Math.floor((Math.random() * (max - min)));
+
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -32,6 +39,10 @@ export default function Cadastro() {
         }
     }, [id]);
 
+    function cancelar(){
+        navigate('/home');
+    }
+
     async function enviar(ev) {
         const formulario = ev.currentTarget;
 
@@ -53,7 +64,12 @@ export default function Cadastro() {
                 }
             });
         } else {
-            await cadastrarCandidato(nome, email, telefone).then((res) => {
+            await cadastrarCandidato(nome, email, telefone, {
+                'colaborativo': randomColab,
+                'impulsivo': randomImp,
+                'intenso': randomInt,
+                'reservado': randomRes,
+            }).then((res) => {
                 if (res) {
                     alert('Candidato cadastrado!');
                     navigate('/home');
@@ -71,7 +87,7 @@ export default function Cadastro() {
             <div className="menu">
                 <Sidebar />
             </div>
-            <Form className="form-cadCandidato" noValidate validated={validated} onSubmit={enviar}>
+            <Form className="form-cadCandidato" noValidate validated={validated}>
                 <div className="conteudo-candidato">
                     <div className="conteudo-formulario-candidato">
                         <h3 className="titulo-formulario-candidato">Cadastrar candidato</h3>
@@ -105,14 +121,14 @@ export default function Cadastro() {
                         <Row>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="outline-danger" type="submit">
+                                    <Button variant="outline-danger" type="submit" onClick={cancelar}>
                                         Cancelar
                                     </Button>
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="d-grid gap-2 mt-3" controlId="formBasicButton">
-                                    <Button variant="primary" type="submit">
+                                    <Button variant="primary" type="submit" onClick={enviar}>
                                         Cadastrar
                                     </Button>
                                 </Form.Group>
